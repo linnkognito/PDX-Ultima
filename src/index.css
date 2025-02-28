@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-violet-50 font-sans;
+  }
+  h1 {
+    @apply text-3xl font-bold tracking-wide pb-4 pl-2 border-b border-violet-300/30;
+  }
+  h2 {
+    @apply text-3xl font-bold tracking-wide pb-4 pl-2 border-b border-violet-300/30;
+  }
+}
