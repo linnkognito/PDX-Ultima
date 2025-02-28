@@ -7,7 +7,7 @@ export default function Icon({
 }) {
   return (
     <span
-      className={`${className} material-symbols-outlined text-2xl transition-transform duration-200 ease-in group-hover:scale-110`}
+      className={`${className} text-2xl material-symbols-outlined transition-transform duration-200 ease-in group-hover:scale-110`}
       aria-label={al || `${name} icon`}
       onClick={onClick}
       {...props}

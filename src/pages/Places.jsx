@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { getPlaces } from '../services/apiPlaces';
+import PlaceCard from '../features/places/placeCard';
 
 function Places() {
   useEffect(() => {
@@ -9,10 +10,10 @@ function Places() {
   return (
     <div>
       <h2>Places</h2>
-      <img
-        src='https://wiutvoyxphqqwolipruf.supabase.co/storage/v1/object/public/places-images//proper-pint.jpg'
-        alt='Picture of a beer and handbag sitting on a table with a dog in the background'
-      />
+
+      <div className='flex flex-col gap-4 pt-6'>
+        <PlaceCard />
+      </div>
     </div>
   );
 }
