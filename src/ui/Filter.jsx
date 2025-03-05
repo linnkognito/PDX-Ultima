@@ -2,11 +2,13 @@ import { useSearchParams } from 'react-router-dom';
 
 import ButtonIcon from './ButtonIcon';
 
-function Filter() {
+function Filter({ filter, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const curFilter = searchParams.get(filter) || options[0].value;
+
   function handleClick(val) {
-    searchParams.set('area', val);
+    searchParams.set(filter, val);
     setSearchParams(searchParams);
   }
 
@@ -16,13 +18,20 @@ function Filter() {
         Filter:
       </h4>
 
-      <ButtonIcon className='min-w-fit px-2' onClick={() => handleClick('all')}>
-        Show all
-      </ButtonIcon>
-      <ButtonIcon onClick={() => handleClick('se')}>SE</ButtonIcon>
-      <ButtonIcon onClick={() => handleClick('ne')}>NE</ButtonIcon>
-      <ButtonIcon onClick={() => handleClick('sw')}>SW</ButtonIcon>
-      <ButtonIcon onClick={() => handleClick('nw')}>NW</ButtonIcon>
+      {options.map((op) => (
+        <ButtonIcon
+          key={op.value}
+          bg={
+            op.value === curFilter
+              ? 'bg-violet-400 hover:bg-violet-300'
+              : 'bg-violet-700 hover:bg-violet-400'
+          }
+          className={`min-w-fit px-2`}
+          onClick={() => handleClick(op.value)}
+        >
+          {op.label}
+        </ButtonIcon>
+      ))}
     </div>
   );
 }
