@@ -1,14 +1,14 @@
-import { useEffect } from 'react';
-import { getGuides } from '../services/apiGuides';
+import Filter from '../ui/Filter';
+import GuidesList from '../features/guides/GuidesList';
 
 function Guides() {
-  useEffect(() => {
-    getGuides().then((data) => console.log(data));
-  }, []);
-
   return (
     <div>
       <h2>Guides</h2>
+      <div className='flex flex-col gap-2'>
+        <Filter />
+        <GuidesList />
+      </div>
     </div>
   );
 }

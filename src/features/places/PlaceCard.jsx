@@ -28,7 +28,7 @@ function PlaceCard() {
 
       <div className='h-fit flex gap-4 pr-6 text-justify text-sm'>
         <img
-          className='w-1/5 aspect-square object-cover'
+          className='w-1/5 aspect-square object-cover rounded-bl-md'
           src='https://wiutvoyxphqqwolipruf.supabase.co/storage/v1/object/public/places-images//proper-pint.jpg'
           alt='Beer and handbag on a table with a dog in the background.'
           loading='lazy'
