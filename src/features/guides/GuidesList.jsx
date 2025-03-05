@@ -4,9 +4,11 @@ import { useGuides } from './useGuides';
 import Spinner from '../../ui/Spinner';
 import GuideCard from './GuideCard';
 
-function GuideTable() {
+function GuidesList() {
   const { isLoading, guides } = useGuides();
   const [searchParams] = useSearchParams();
+
+  console.log(guides);
 
   if (isLoading) <Spinner />;
 
@@ -30,4 +32,4 @@ function GuideTable() {
   );
 }
 
-export default GuideTable;
+export default GuidesList;

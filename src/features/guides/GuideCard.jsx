@@ -1,3 +1,5 @@
+import { calcDistance, homeLocation } from '../../utils/calcDistance';
+
 import Icon from '../../common/Icon';
 import ButtonIcon from '../../ui/ButtonIcon';
 import ButtonTag from '../../ui/ButtonTag';
@@ -14,7 +16,18 @@ function GuideCard({ guide }) {
     guideTags: tags,
   } = guide;
 
+  console.log(location);
+
   const tagsArray = tags.split(',');
+
+  const position = guide?.guideLocation?.match(/@([-.\d]+),([-.\d]+)/);
+
+  const distance = position
+    ? calcDistance(homeLocation, {
+        lat: position?.[1],
+        lng: position?.[2],
+      }) + ' miles'
+    : 'N/A';
 
   return (
     <div className='shadow-md shadow-violet-400 rounded-md'>
@@ -37,11 +50,12 @@ function GuideCard({ guide }) {
             onClick={() =>
               window.open(location, '_blank', 'noopener,noreferrer')
             }
+            disabled={!location}
           >
             <Icon name='location_on' />
           </ButtonIcon>
           <ButtonIcon className='w-fit px-2' title='View on Google Maps'>
-            <h4>0 miles</h4>
+            <h4>{distance && distance}</h4>
           </ButtonIcon>
         </div>
       </div>
