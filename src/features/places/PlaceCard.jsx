@@ -1,27 +1,57 @@
 import Icon from '../../common/Icon';
 import ButtonIcon from '../../ui/ButtonIcon';
 import ButtonTag from '../../ui/ButtonTag';
+import { capitalizeFirstLetter } from '../../utils/helpers';
 
-function PlaceCard() {
+function PlaceCard({ place }) {
+  const {
+    name,
+    description,
+    image,
+    area,
+    location,
+    category,
+    reason,
+    tags,
+    favorite,
+  } = place;
+
+  const categories = category.split(',');
+  const tagsArray = tags.split(',');
+
   return (
     <div className='shadow-md shadow-violet-400 rounded-md'>
       {/* Header */}
       <div className='flex items-center justify-between bg-violet-500 rounded-t-md pr-4'>
         <div className='px-4 pb-2 pt-1'>
-          <h3>Place name</h3>
+          <h3>{name}</h3>
 
           <div className='flex gap-1'>
             <h4 className='text-sm font-bold text-violet-950'>Area:</h4>
-            <p className='text-sm text-violet-300'>Woodstock</p>
+            <p className='text-sm text-violet-300'>{area}</p>
           </div>
         </div>
 
         <div className='flex gap-1'>
-          <ButtonIcon title='View on Google Maps'>
+          <ButtonIcon
+            title='View on Google Maps'
+            onClick={() =>
+              window.open(location, '_blank', 'noopener,noreferrer')
+            }
+            disabled={!location}
+          >
             <Icon name='location_on' />
           </ButtonIcon>
-          <ButtonIcon title='View on Google Maps'>
-            <Icon name='star' />
+          <ButtonIcon
+            title={`${favorite ? 'We love this place!' : ''}`}
+            bg={`${
+              favorite ? 'bg-yellow-700' : 'bg-violet-700 hover:bg-violet-600'
+            }`}
+          >
+            <Icon
+              name='star'
+              className={`${favorite ? 'text-yellow-300' : ''}`}
+            />
           </ButtonIcon>
         </div>
       </div>
@@ -29,38 +59,43 @@ function PlaceCard() {
       <div className='h-fit flex gap-4 pr-6 text-justify text-sm'>
         <img
           className='w-1/5 aspect-square object-cover rounded-bl-md'
-          src='https://wiutvoyxphqqwolipruf.supabase.co/storage/v1/object/public/places-images//proper-pint.jpg'
-          alt='Beer and handbag on a table with a dog in the background.'
+          src={image}
+          alt={`Picture of ${name}`}
           loading='lazy'
         />
 
         <div className='flex flex-col gap-4 pt-4 pb-3 place-content-between'>
           <div className='flex gap-2'>
-            <ButtonTag className='pt-[2px] px-[3px] text-sm' size='sm'>
-              🍺Beer
-            </ButtonTag>
-            <ButtonTag className='pt-[2px] px-[3px] text-sm' size='sm'>
-              🍎Cider
-            </ButtonTag>
-            <ButtonTag className='pt-[2px] px-[3px] text-sm' size='sm'>
-              🚶‍♀️Local
-            </ButtonTag>
+            {categories.length > 0 &&
+              categories.map((category) => (
+                <ButtonTag
+                  key={category}
+                  className='pt-[2px] px-[3px] text-sm'
+                  size='sm'
+                >
+                  {category}
+                </ButtonTag>
+              ))}
           </div>
 
           {/* Description */}
-          <p className='text-sm'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
+          <div className='flex flex-col gap-4'>
+            <p className='text-sm'>{description}</p>
+            <div className='flex gap-2'>
+              <h4 className='font-bold text-violet-400'>➡️ Go here for:</h4>
+              <p>{reason}</p>
+            </div>
+          </div>
 
           {/* Tags */}
-          <div className='flex py-1 px-2 gap-2 bg-violet-800/30 items-center text-sm rounded-md'>
+          <div className='flex max-w-full flex-wrap py-1 px-2 gap-2 bg-violet-800/30 items-center text-sm rounded-md'>
             <h4 className='font-bold text-violet-400'>Tags:</h4>
-            <ButtonTag>Bar</ButtonTag>
-            <ButtonTag>Taproom</ButtonTag>
-            <ButtonTag>Local</ButtonTag>
+
+            <ButtonTag>{area}</ButtonTag>
+            {tagsArray?.length > 0 &&
+              tagsArray.map((tag) => (
+                <ButtonTag key={tag}>{capitalizeFirstLetter(tag)}</ButtonTag>
+              ))}
           </div>
         </div>
       </div>

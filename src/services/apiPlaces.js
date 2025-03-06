@@ -10,3 +10,18 @@ export async function getPlaces() {
 
   return data;
 }
+
+export async function getPlace(id) {
+  const { data, error } = await supabase
+    .from('places')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error('Place not found');
+  }
+
+  return data;
+}

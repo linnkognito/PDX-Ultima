@@ -1,19 +1,31 @@
-// import { useEffect } from 'react';
-// import { getPlaces } from '../services/apiPlaces';
-
-import PlaceCard from '../features/places/placeCard';
+import ActionbarContainer from '../ui/ActionbarContainer';
+import Filter from '../ui/Filter';
+import SortBy from '../ui/SortBy';
+import PlacesList from '../features/places/PlacesList';
 
 function Places() {
-  // useEffect(() => {
-  //   getPlaces().then((data) => console.log(data));
-  // }, []);
-
   return (
     <div>
       <h2>Places</h2>
+      <ActionbarContainer className='justify-between'>
+        <Filter
+          filter='favorite'
+          options={[
+            { value: 'all', label: 'Show all' },
+            { value: 'true', label: 'Favorites' },
+          ]}
+        />
+
+        <SortBy
+          options={[
+            { value: 'guideName-asc', label: 'Guide name (A-Z)' },
+            { value: 'guideName-desc', label: 'Guide name (Z-A)' },
+          ]}
+        />
+      </ActionbarContainer>
 
       <div className='flex flex-col gap-4 pt-6'>
-        <PlaceCard />
+        <PlacesList />
       </div>
     </div>
   );

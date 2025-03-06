@@ -62,8 +62,8 @@ function GuideCard({ guide }) {
           {image && (
             <img
               className='w-1/5 aspect-square object-cover rounded-bl-md'
-              src={`url(${image})`}
-              alt='Beer and handbag on a table with a dog in the background.'
+              src={image}
+              alt={`Picture of ${title}`}
               loading='lazy'
             />
           )}
@@ -83,7 +83,7 @@ function GuideCard({ guide }) {
           </p>
 
           {/* Tags */}
-          <div className='flex py-1 px-2 gap-2 bg-violet-800/30 items-center text-sm rounded-md'>
+          <div className='flex max-w-full flex-wrap py-1 px-2 gap-2 bg-violet-800/30 items-center text-sm rounded-md'>
             <h4 className='font-bold text-violet-400'>Tags:</h4>
 
             <ButtonTag>{area}</ButtonTag>
