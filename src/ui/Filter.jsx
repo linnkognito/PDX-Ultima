@@ -1,7 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-
 import ButtonIcon from './ButtonIcon';
-import ActionbarContainer from './ActionbarContainer';
 
 function Filter({ filter, options }) {
   const [searchParams, setSearchParams] = useSearchParams();

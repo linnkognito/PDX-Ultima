@@ -15,13 +15,9 @@ function GuideCard({ guide }) {
     guideImage: image,
     guideTags: tags,
   } = guide;
-
-  console.log(location);
-
   const tagsArray = tags.split(',');
 
   const position = guide?.guideLocation?.match(/@([-.\d]+),([-.\d]+)/);
-
   const distance = position
     ? calcDistance(homeLocation, {
         lat: position?.[1],

@@ -21,16 +21,10 @@ function Guides() {
           />
           <SortBy
             options={[
-              { value: 'name-asc', label: 'Guide name (A-Z)' },
-              { value: 'name-desc', label: 'Guide name (Z-A)' },
-              {
-                value: 'disctance-asc',
-                label: 'Distance ↗️',
-              },
-              {
-                value: 'disctance-desc',
-                label: 'Distance ↘️',
-              },
+              { value: 'created_at-desc', label: 'Newest' },
+              { value: 'created_at-asc', label: 'Oldest' },
+              { value: 'guideName-asc', label: 'Guide name (A-Z)' },
+              { value: 'guideName-desc', label: 'Guide name (Z-A)' },
             ]}
           />
         </ActionbarContainer>

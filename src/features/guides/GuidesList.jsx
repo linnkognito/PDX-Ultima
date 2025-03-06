@@ -8,10 +8,9 @@ function GuidesList() {
   const { isLoading, guides } = useGuides();
   const [searchParams] = useSearchParams();
 
-  console.log(guides);
-
   if (isLoading) <Spinner />;
 
+  // Filter
   const filterValue = searchParams.get('area') || 'all';
 
   let filteredGuides;
@@ -23,9 +22,29 @@ function GuidesList() {
     );
   }
 
+  // Sort
+  const sortBy = searchParams.get('sortBy') || 'created-new';
+  const [field, direction] = sortBy.split('-');
+
+  const sortedGuides = filteredGuides?.sort((a, b) => {
+    if (field === 'created_at') {
+      return direction === 'asc'
+        ? new Date(a.created_at) - new Date(b.created_at)
+        : new Date(b.created_at) - new Date(a.created_at);
+    }
+
+    if (field === 'guideName') {
+      return direction === 'asc'
+        ? a.guideName.localeCompare(b.guideName)
+        : b.guideName.localeCompare(a.guideName);
+    }
+
+    return direction === 'asc' ? a[field] - b[field] : b[field] - a[field];
+  });
+
   return (
     <div className='flex flex-col gap-4'>
-      {filteredGuides?.map((guide) => (
+      {sortedGuides?.map((guide) => (
         <GuideCard key={guide.id} guide={guide} />
       ))}
     </div>
