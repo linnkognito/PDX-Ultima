@@ -1,10 +1,9 @@
+import { usePlaces } from './usePlaces';
 import Spinner from '../../ui/Spinner';
 import PlaceCard from './PlaceCard';
-import { usePlaces } from './usePlaces';
 
 function PlacesList() {
   const { isLoading, places } = usePlaces();
-  console.log(places);
 
   if (isLoading) <Spinner />;
 

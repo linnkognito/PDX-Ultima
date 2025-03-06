@@ -18,8 +18,8 @@ function Places() {
 
         <SortBy
           options={[
-            { value: 'guideName-asc', label: 'Guide name (A-Z)' },
-            { value: 'guideName-desc', label: 'Guide name (Z-A)' },
+            { value: 'name-asc', label: 'Name of place (A-Z)' },
+            { value: 'name-desc', label: 'Name of place (Z-A)' },
           ]}
         />
       </ActionbarContainer>
