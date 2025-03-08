@@ -34,6 +34,13 @@
   }
 }
 
+@utility divider-b {
+  @apply border-b border-violet-300/30;
+}
+@utility divider-y {
+  @apply border-y border-violet-300/30;
+}
+
 @utility animation-prep-200 {
   will-change: auto;
   transition: all 200ms ease-in-out;

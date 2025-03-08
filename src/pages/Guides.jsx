@@ -3,11 +3,28 @@ import GuidesList from '../features/guides/GuidesList';
 import SortBy from '../ui/SortBy';
 import ActionbarContainer from '../ui/ActionbarContainer';
 import CreateGuideForm from '../features/guides/CreateGuideForm';
+import Button from '../ui/Button';
+import { useState } from 'react';
+import SubContainer from '../ui/SubContainer';
+import GuideCard from '../features/guides/GuideCard';
+import ExampleGuide from '../features/guides/ExampleGuide';
 
 function Guides() {
+  const [showForm, setShowForm] = useState();
+
   return (
     <div>
-      <h2>Guides</h2>
+      <div className='relative'>
+        <h2>Guides</h2>
+        <Button
+          className='absolute top-2 right-0'
+          onClick={() => setShowForm((show) => !show)}
+        >
+          Add new guide
+        </Button>
+      </div>
+
+      {/* Filter & Sort */}
       <div className='flex flex-col gap-2'>
         <ActionbarContainer className='justify-between'>
           <Filter
@@ -29,7 +46,21 @@ function Guides() {
             ]}
           />
         </ActionbarContainer>
-        <CreateGuideForm />
+
+        {/* Form */}
+        {showForm && (
+          <SubContainer className='flex flex-col bg-violet-700/10'>
+            <h2 className='divider-b pt-3 mb-6'>New Guide</h2>
+
+            <ExampleGuide />
+
+            <div className='px-6'>
+              <CreateGuideForm />
+            </div>
+          </SubContainer>
+        )}
+
+        {/* Guides */}
         <GuidesList />
       </div>
     </div>
