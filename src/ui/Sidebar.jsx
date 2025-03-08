@@ -11,7 +11,7 @@ const menuItems = [
 
 function Sidebar() {
   return (
-    <aside className='w-fit sm:w-2/6 h-full shadow-lg shadow-violet-300/50'>
+    <aside className='w-fit sm:w-2/6 min-h-full shadow-lg shadow-violet-300/50'>
       <nav>
         <ul className='flex gap-3 flex-col px-4 pt-24'>
           {menuItems.map((link) => (
