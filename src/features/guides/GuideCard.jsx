@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 function GuideCard({ guide }) {
   const {
     id,
-    title,
+    name,
     neighborhood,
     area,
     location,
@@ -48,7 +48,7 @@ function GuideCard({ guide }) {
       {/* Header */}
       <div className='flex items-center justify-between bg-violet-500 rounded-t-md pr-4'>
         <div className='px-4 pb-2 pt-1'>
-          <h3>{title}</h3>
+          <h3>{name || `Guide #${id}`}</h3>
 
           <div className='flex gap-1'>
             <h4 className='text-sm font-bold text-violet-950'>Area:</h4>
@@ -94,7 +94,7 @@ function GuideCard({ guide }) {
             <img
               className='w-1/5 aspect-square object-cover rounded-bl-md'
               src={image}
-              alt={`Picture of ${title}`}
+              alt={`Picture of ${name}`}
               loading='lazy'
             />
           )}

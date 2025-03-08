@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import Form from '../../ui/Form';
@@ -5,12 +6,28 @@ import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
 import Button from '../../ui/Button';
+import { createGuide } from '../../services/apiGuides';
+import toast from 'react-hot-toast';
 
 function CreateGuideForm() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+
+  const queryClient = useQueryClient();
+
+  const { isLoading: isCreating, mutate } = useMutation({
+    mutationFn: createGuide, // no need to pass args
+    onSuccess: () => {
+      toast.success('New guide created, pow pow!');
+      queryClient.invalidateQueries({ queryKey: ['guides'] });
+      reset();
+    },
+    onError: (err) => {
+      toast.error(`Creating new guide failed (${err.message})`);
+    },
+  });
 
   function onSubmit(data) {
-    console.log('form submitted:', data);
+    mutate(data);
   }
 
   return (
@@ -69,7 +86,9 @@ function CreateGuideForm() {
 
       <div className='flex gap-4 pt-2 pb-4 pr-8 justify-end'>
         <Button theme='cancel'>Cancel</Button>
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' disabled={isCreating}>
+          Submit
+        </Button>
       </div>
     </Form>
   );
