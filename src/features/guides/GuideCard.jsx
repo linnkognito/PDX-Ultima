@@ -1,4 +1,6 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { calcDistance, homeLocation } from '../../utils/calcDistance';
+import { deleteGuide } from '../../services/apiGuides';
 
 import Icon from '../../common/Icon';
 import ButtonIcon from '../../ui/ButtonIcon';
@@ -6,6 +8,7 @@ import ButtonTag from '../../ui/ButtonTag';
 
 function GuideCard({ guide }) {
   const {
+    id,
     guideName: title,
     guideNeighborhood: neighborhood,
     guideArea: area,
@@ -15,7 +18,20 @@ function GuideCard({ guide }) {
     guideImage: image,
     guideTags: tags,
   } = guide;
+
+  const queryClient = useQueryClient();
   const tagsArray = tags.split(',');
+
+  // Mutate: Delete guide
+  const { isLoading: isDeleting, mutate } = useMutation({
+    mutationFn: (id) => deleteGuide(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['guides'],
+      });
+    },
+    onError: (err) => alert(err.message),
+  });
 
   const position = guide?.guideLocation?.match(/@([-.\d]+),([-.\d]+)/);
   const distance = position
@@ -40,7 +56,14 @@ function GuideCard({ guide }) {
           </div>
         </div>
 
+        {/* Buttons */}
         <div className='flex gap-1'>
+          {/* Distance button */}
+          <ButtonIcon className='w-fit px-2'>
+            <h4>{distance && distance}</h4>
+          </ButtonIcon>
+
+          {/* Google maps link button */}
           <ButtonIcon
             title='View on Google Maps'
             onClick={() =>
@@ -50,8 +73,14 @@ function GuideCard({ guide }) {
           >
             <Icon name='location_on' />
           </ButtonIcon>
-          <ButtonIcon className='w-fit px-2' title='View on Google Maps'>
-            <h4>{distance && distance}</h4>
+
+          {/* Delete button */}
+          <ButtonIcon
+            title='Delete'
+            onClick={() => mutate(id)}
+            disable={isDeleting}
+          >
+            <Icon name='delete' />
           </ButtonIcon>
         </div>
       </div>
@@ -72,6 +101,7 @@ function GuideCard({ guide }) {
         <div className='flex flex-col gap-4 pt-4 pb-3 place-content-between'>
           <div className='flex gap-2'>
             <h4 className='font-bold text-violet-400'>Theme:</h4>
+
             <ButtonTag className='pt-[2px] px-[3px] text-sm' size='sm'>
               {theme}
             </ButtonTag>
