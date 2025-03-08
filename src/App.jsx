@@ -9,6 +9,7 @@ import Guides from './pages/Guides';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
 import Places from './pages/Places';
+import { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,6 +23,20 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
+      <Toaster
+        toastOptions={{
+          success: { duration: 3000 },
+          error: { duration: 5000 },
+          style: {
+            maxWidth: '500px',
+            padding: '16px 24px',
+            backgroundColor: '#ddd6fe',
+            color: '#2e1065',
+            boxShadow: '0 0 20px #c4b5fd',
+          },
+        }}
+      />
+
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>

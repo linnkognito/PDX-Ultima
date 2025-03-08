@@ -2,6 +2,7 @@ import Filter from '../ui/Filter';
 import GuidesList from '../features/guides/GuidesList';
 import SortBy from '../ui/SortBy';
 import ActionbarContainer from '../ui/ActionbarContainer';
+import CreateGuideForm from '../features/guides/CreateGuideForm';
 
 function Guides() {
   return (
@@ -28,7 +29,7 @@ function Guides() {
             ]}
           />
         </ActionbarContainer>
-
+        <CreateGuideForm />
         <GuidesList />
       </div>
     </div>

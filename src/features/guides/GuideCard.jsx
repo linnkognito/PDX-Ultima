@@ -5,6 +5,7 @@ import { deleteGuide } from '../../services/apiGuides';
 import Icon from '../../common/Icon';
 import ButtonIcon from '../../ui/ButtonIcon';
 import ButtonTag from '../../ui/ButtonTag';
+import toast from 'react-hot-toast';
 
 function GuideCard({ guide }) {
   const {
@@ -26,11 +27,12 @@ function GuideCard({ guide }) {
   const { isLoading: isDeleting, mutate } = useMutation({
     mutationFn: (id) => deleteGuide(id),
     onSuccess: () => {
+      toast.success('Guide successfully deleted');
       queryClient.invalidateQueries({
         queryKey: ['guides'],
       });
     },
-    onError: (err) => alert(err.message),
+    onError: (err) => toast.error(err.message),
   });
 
   const position = guide?.guideLocation?.match(/@([-.\d]+),([-.\d]+)/);
