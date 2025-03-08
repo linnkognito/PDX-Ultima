@@ -41,8 +41,8 @@ function Guides() {
             options={[
               { value: 'created_at-desc', label: 'Newest' },
               { value: 'created_at-asc', label: 'Oldest' },
-              { value: 'guideName-asc', label: 'Guide name (A-Z)' },
-              { value: 'guideName-desc', label: 'Guide name (Z-A)' },
+              { value: 'ame-asc', label: 'Guide name (A-Z)' },
+              { value: 'ame-desc', label: 'Guide name (Z-A)' },
             ]}
           />
         </ActionbarContainer>

@@ -10,14 +10,14 @@ import toast from 'react-hot-toast';
 function GuideCard({ guide }) {
   const {
     id,
-    guideName: title,
-    guideNeighborhood: neighborhood,
-    guideArea: area,
-    guideLocation: location,
-    guideTheme: theme,
-    guideDescription: description,
-    guideImage: image,
-    guideTags: tags,
+    title,
+    neighborhood,
+    area,
+    location,
+    theme,
+    description,
+    image,
+    tags,
   } = guide;
 
   const queryClient = useQueryClient();
@@ -35,7 +35,7 @@ function GuideCard({ guide }) {
     onError: (err) => toast.error(err.message),
   });
 
-  const position = guide?.guideLocation?.match(/@([-.\d]+),([-.\d]+)/);
+  const position = guide?.location?.match(/@([-.\d]+),([-.\d]+)/);
   const distance = position
     ? calcDistance(homeLocation, {
         lat: position?.[1],

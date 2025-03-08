@@ -15,12 +15,12 @@ function ExampleGuide() {
         <GuideCard
           guide={{
             id: 'example',
-            guideName: 'Guide name',
-            guideNeighborhood: 'Neighborhood input',
-            guideArea: 'Area input',
-            guideTheme: 'Theme input',
-            guideDescription: 'Description goes here',
-            guideTags: 'Tags, Go, Here',
+            name: 'Guide name',
+            neighborhood: 'Neighborhood input',
+            area: 'Area input',
+            theme: 'Theme input',
+            description: 'Description goes here',
+            tags: 'Tags, Go, Here',
           }}
         />
       )}

@@ -18,7 +18,7 @@ function GuidesList() {
     filteredGuides = guides;
   } else {
     filteredGuides = guides?.filter((guide) =>
-      guide.guideArea.toLowerCase().includes(filterValue)
+      guide.area.toLowerCase().includes(filterValue)
     );
   }
 
@@ -33,10 +33,10 @@ function GuidesList() {
         : new Date(b.created_at) - new Date(a.created_at);
     }
 
-    if (field === 'guideName') {
+    if (field === 'name') {
       return direction === 'asc'
-        ? a.guideName.localeCompare(b.guideName)
-        : b.guideName.localeCompare(a.guideName);
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
     }
 
     return direction === 'asc' ? a[field] - b[field] : b[field] - a[field];

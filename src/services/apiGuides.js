@@ -26,6 +26,17 @@ export async function getGuide(id) {
   return data;
 }
 
+export async function createGuide(newGuide) {
+  const { data, error } = await supabase.from('guides').insert([newGuide]);
+
+  if (error) {
+    console.error(error);
+    throw new Error(`Something went wrong when creating your new guide`);
+  }
+
+  return data;
+}
+
 export async function deleteGuide(id) {
   const { data, error } = await supabase.from('guides').delete().eq('id', id);
 
