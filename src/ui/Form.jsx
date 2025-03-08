@@ -1,5 +1,9 @@
-function Form({ children }) {
-  return <form className='flex flex-col gap-4'>{children}</form>;
+function Form({ children, ...props }) {
+  return (
+    <form className='flex flex-col gap-4' {...props}>
+      {children}
+    </form>
+  );
 }
 
 export default Form;

@@ -1,12 +1,12 @@
-import Filter from '../ui/Filter';
-import GuidesList from '../features/guides/GuidesList';
-import SortBy from '../ui/SortBy';
-import ActionbarContainer from '../ui/ActionbarContainer';
-import CreateGuideForm from '../features/guides/CreateGuideForm';
-import Button from '../ui/Button';
 import { useState } from 'react';
+
+import ActionbarContainer from '../ui/ActionbarContainer';
+import Filter from '../ui/Filter';
+import SortBy from '../ui/SortBy';
+import CreateGuideForm from '../features/guides/CreateGuideForm';
+import GuidesList from '../features/guides/GuidesList';
+import Button from '../ui/Button';
 import SubContainer from '../ui/SubContainer';
-import GuideCard from '../features/guides/GuideCard';
 import ExampleGuide from '../features/guides/ExampleGuide';
 
 function Guides() {
@@ -20,7 +20,7 @@ function Guides() {
           className='absolute top-2 right-0'
           onClick={() => setShowForm((show) => !show)}
         >
-          Add new guide
+          {showForm ? 'Hide form' : 'Add new guide'}
         </Button>
       </div>
 
@@ -51,7 +51,6 @@ function Guides() {
         {showForm && (
           <SubContainer className='flex flex-col bg-violet-700/10'>
             <h2 className='divider-b pt-3 mb-6'>New Guide</h2>
-
             <ExampleGuide />
 
             <div className='px-6'>
