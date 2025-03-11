@@ -1,9 +1,9 @@
 function ButtonIcon({
   children,
   size = 'md',
+  title = '',
   bg = 'bg-violet-700 hover:bg-violet-600',
   className = '',
-  title = '',
   disabled = false,
   onClick = () => {},
 }) {
@@ -16,7 +16,7 @@ function ButtonIcon({
       title={title}
       className={`${className} ${bg} ${
         sizes[size]
-      } flex items-center justify-center  shadow-sm shadow-violet-400 will-change duration-300 ease-out transition-all font-sans tracking-wider rounded-md
+      } flex items-center justify-center shadow-sm shadow-violet-400 will-change duration-300 ease-out transition-all font-sans tracking-wider rounded-md
       ${
         disabled
           ? 'cursor-not-allowed opacity-50'
