@@ -1,6 +1,7 @@
 import Icon from '../../common/Icon';
 import ButtonIcon from '../../ui/ButtonIcon';
 import ButtonTag from '../../ui/ButtonTag';
+import TagsContainer from '../../ui/TagsContainer';
 import { capitalizeFirstLetter } from '../../utils/helpers';
 
 function PlaceCard({ place }) {
@@ -81,22 +82,22 @@ function PlaceCard({ place }) {
           {/* Description */}
           <div className='flex flex-col gap-4'>
             <p className='text-sm'>{description}</p>
-            <div className='flex gap-2'>
-              <h4 className='font-bold text-violet-400'>➡️ Go here for:</h4>
-              <p>{reason}</p>
-            </div>
+            {reason && (
+              <div className='flex gap-2'>
+                <h4 className='font-bold text-violet-400'>➡️ Go here for:</h4>
+                <p>{reason}</p>
+              </div>
+            )}
           </div>
 
           {/* Tags */}
-          <div className='flex max-w-full flex-wrap py-1 px-2 gap-2 bg-violet-800/30 items-center text-sm rounded-md'>
-            <h4 className='font-bold text-violet-400'>Tags:</h4>
-
+          <TagsContainer>
             <ButtonTag>{area}</ButtonTag>
             {tagsArray?.length > 0 &&
               tagsArray.map((tag) => (
                 <ButtonTag key={tag}>{capitalizeFirstLetter(tag)}</ButtonTag>
               ))}
-          </div>
+          </TagsContainer>
         </div>
       </div>
     </div>

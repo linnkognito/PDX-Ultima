@@ -34,3 +34,25 @@ export async function getPlace(id) {
 
   return data;
 }
+
+export async function createPlace(newPlace) {
+  const { data, error } = await supabase.from('places').insert([newPlace]);
+
+  if (error) {
+    console.error(error);
+    throw new Error(`Something went wrong when creating the new place`);
+  }
+
+  return data;
+}
+
+export async function deletePlace(id) {
+  const { data, error } = await supabase.from('places').delete().eq('id', id);
+
+  if (error) {
+    console.error(error);
+    throw new Error(`Couldn't delete the place for some reason.`);
+  }
+
+  return data;
+}

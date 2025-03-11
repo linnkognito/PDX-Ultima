@@ -6,6 +6,8 @@ import Icon from '../../common/Icon';
 import ButtonIcon from '../../ui/ButtonIcon';
 import ButtonTag from '../../ui/ButtonTag';
 import toast from 'react-hot-toast';
+import { createAndCleanUpArray } from '../../utils/helpers';
+import TagsContainer from '../../ui/TagsContainer';
 
 function GuideCard({ guide }) {
   const {
@@ -21,8 +23,8 @@ function GuideCard({ guide }) {
   } = guide;
 
   const queryClient = useQueryClient();
-  const tagsArray = tags.split(',');
-  const areaArray = area.split(',');
+  const tagsArray = createAndCleanUpArray(tags);
+  const areaArray = createAndCleanUpArray(area);
 
   // Mutate: Delete guide
   const { isLoading: isDeleting, mutate } = useMutation({
@@ -54,7 +56,7 @@ function GuideCard({ guide }) {
           <div className='flex gap-1'>
             <h4 className='text-sm font-bold text-violet-950'>Area:</h4>
             <p className='text-sm text-violet-300'>
-              {neighborhood} ({area})
+              {neighborhood ? `${neighborhood} (${area})` : 'Not specified'}
             </p>
           </div>
         </div>
@@ -102,13 +104,15 @@ function GuideCard({ guide }) {
         </div>
 
         <div className='flex flex-col gap-4 pt-4 pb-3 place-content-between'>
-          <div className='flex gap-2'>
-            <h4 className='font-bold text-violet-400'>Theme:</h4>
+          {theme && (
+            <div className='flex gap-2'>
+              <h4 className='font-bold text-violet-400'>Theme:</h4>
 
-            <ButtonTag className='pt-[2px] px-[3px] text-sm' size='sm'>
-              {theme}
-            </ButtonTag>
-          </div>
+              <ButtonTag className='pt-[2px] px-[3px] text-sm' size='sm'>
+                {theme}
+              </ButtonTag>
+            </div>
+          )}
 
           {/* Description */}
           <p className='text-sm'>
@@ -116,17 +120,19 @@ function GuideCard({ guide }) {
           </p>
 
           {/* Tags */}
-          <div className='flex max-w-full flex-wrap py-1 px-2 gap-2 bg-violet-800/30 items-center text-sm rounded-md'>
-            <h4 className='font-bold text-violet-400'>Tags:</h4>
+          {areaArray.length || neighborhood || tagsArray.length ? (
+            <TagsContainer>
+              {areaArray?.length > 0 &&
+                areaArray.map((a) => <ButtonTag key={a}>{a}</ButtonTag>)}
 
-            {areaArray?.length &&
-              areaArray.map((a) => <ButtonTag key={a}>{a}</ButtonTag>)}
-            <ButtonTag>{neighborhood}</ButtonTag>
-            {tagsArray?.length > 0 &&
-              tagsArray.map((tag) => (
-                <ButtonTag key={tag}>{tag.trim()}</ButtonTag>
-              ))}
-          </div>
+              {neighborhood && <ButtonTag>{neighborhood.trim()}</ButtonTag>}
+
+              {tagsArray?.length > 0 &&
+                tagsArray.map((tag) => <ButtonTag key={tag}>{tag}</ButtonTag>)}
+            </TagsContainer>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </div>

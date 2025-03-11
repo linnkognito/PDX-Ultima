@@ -2,29 +2,30 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-import { createGuide } from '../../services/apiGuides';
+import { createPlace } from '../../services/apiPlaces';
 
 import Form from '../../ui/Form';
 import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
 import FormActionButtons from '../../ui/FormActionButtons';
+import Checkbox from '../../ui/Checkbox';
 
-function CreateGuideForm({ setShowForm }) {
+function CreatePlaceForm({ setShowForm }) {
   const { register, handleSubmit, reset, formState } = useForm();
   const { errors } = formState;
 
   const queryClient = useQueryClient();
 
   const { isLoading: isCreating, mutate } = useMutation({
-    mutationFn: createGuide, // no need to pass args
+    mutationFn: createPlace, // no need to pass args
     onSuccess: () => {
-      toast.success('New guide created, pow pow!');
-      queryClient.invalidateQueries({ queryKey: ['guides'] });
+      toast.success('New place created, just like that');
+      queryClient.invalidateQueries({ queryKey: ['places'] });
       reset();
     },
     onError: (err) => {
-      toast.error(`Creating new guide failed (${err.message})`);
+      toast.error(`Creating new place failed (${err.message})`);
     },
   });
 
@@ -34,13 +35,17 @@ function CreateGuideForm({ setShowForm }) {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormRow htmlFor='name' label='Guide name' error={errors?.name?.message}>
+      <FormRow
+        htmlFor='name'
+        label='Name of place'
+        error={errors?.name?.message}
+      >
         <Input
           id='name'
           {...register('name', {
-            required: `Enter a Guide name`,
+            required: `Enter a Place name`,
           })}
-          placeholder='Best foodcarts in Portland'
+          placeholder='Proper Pint'
         />
       </FormRow>
 
@@ -54,7 +59,7 @@ function CreateGuideForm({ setShowForm }) {
           {...register('description', {
             required: `Enter a description`,
           })}
-          placeholder='Short description of guide'
+          placeholder='Dog friendly taproom'
         />
       </FormRow>
 
@@ -68,19 +73,19 @@ function CreateGuideForm({ setShowForm }) {
         />
       </FormRow>
 
-      <FormRow htmlFor='neighborhood' label='Neighborhood'>
+      <FormRow htmlFor='category' label='Category'>
         <Input
-          id='neighborhood'
-          {...register('neighborhood')}
-          placeholder='Woodstock'
+          id='category'
+          {...register('category')}
+          placeholder='Beer, Winery, Restaurant'
         />
       </FormRow>
 
-      <FormRow htmlFor='theme' label='Theme'>
+      <FormRow htmlFor='reason' label='Go here for...'>
         <Input
-          id='theme'
-          {...register('theme')}
-          placeholder='Brunch, Fine Dining, Taproom'
+          id='neighborhood'
+          {...register('neighborhood')}
+          placeholder='The cider, Fine dining, Atmosphere'
         />
       </FormRow>
 
@@ -100,6 +105,10 @@ function CreateGuideForm({ setShowForm }) {
         />
       </FormRow>
 
+      <FormRow htmlFor='favorite' label='Is this a favorite place?'>
+        <Checkbox id='favorite' boxLabel='Yes' {...register('favorite')} />
+      </FormRow>
+
       <FormActionButtons
         cancel={{ onClick: () => setShowForm(false) }}
         submit={{ disabled: isCreating }}
@@ -108,4 +117,4 @@ function CreateGuideForm({ setShowForm }) {
   );
 }
 
-export default CreateGuideForm;
+export default CreatePlaceForm;

@@ -1,6 +1,7 @@
+import FormError from './FormError';
 import Label from './Label';
 
-function FormRow({ children, label = '', htmlFor = '' }) {
+function FormRow({ children, label = '', htmlFor = '', error }) {
   return (
     <div className='w-full border border-violet-500 rounded-md bg-violet-800/20 relative'>
       <div className='flex flex-col gap-2 px-4 pb-3'>
@@ -8,6 +9,7 @@ function FormRow({ children, label = '', htmlFor = '' }) {
 
         <span className='-mt-1 w-full flex gap-3 justify-between'>
           {children}
+          {error && <FormError>{error}</FormError>}
         </span>
       </div>
     </div>
