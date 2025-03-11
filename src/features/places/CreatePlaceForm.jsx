@@ -42,6 +42,7 @@ function CreatePlaceForm({ setShowForm }) {
       >
         <Input
           id='name'
+          disabled={isCreating}
           {...register('name', {
             required: `Enter a Place name`,
           })}
@@ -56,6 +57,7 @@ function CreatePlaceForm({ setShowForm }) {
       >
         <TextArea
           id='description'
+          disabled={isCreating}
           {...register('description', {
             required: `Enter a description`,
           })}
@@ -66,7 +68,8 @@ function CreatePlaceForm({ setShowForm }) {
       <FormRow htmlFor='area' label='Area' error={errors?.area?.message}>
         <Input
           id='area'
-          {...register('description', {
+          disabled={isCreating}
+          {...register('area', {
             required: `Enter one or multiple areas (separated by comma)`,
           })}
           placeholder='SE, NE, SW, NW'
@@ -76,6 +79,7 @@ function CreatePlaceForm({ setShowForm }) {
       <FormRow htmlFor='category' label='Category'>
         <Input
           id='category'
+          disabled={isCreating}
           {...register('category')}
           placeholder='Beer, Winery, Restaurant'
         />
@@ -84,29 +88,47 @@ function CreatePlaceForm({ setShowForm }) {
       <FormRow htmlFor='reason' label='Go here for...'>
         <Input
           id='neighborhood'
+          disabled={isCreating}
           {...register('neighborhood')}
           placeholder='The cider, Fine dining, Atmosphere'
         />
       </FormRow>
 
       <FormRow htmlFor='location' label='Google Maps URL'>
-        <Input id='location' {...register('location')} placeholder='http://' />
+        <Input
+          id='location'
+          disabled={isCreating}
+          {...register('location')}
+          placeholder='http://'
+        />
       </FormRow>
 
       <FormRow htmlFor='image' label='Image'>
-        <Input type='file' accept='image/*' id='image' {...register('image')} />
+        <Input
+          type='file'
+          accept='image/*'
+          id='image'
+          disabled={isCreating}
+          {...register('image')}
+        />
       </FormRow>
 
       <FormRow htmlFor='tags' label='Tags'>
         <Input
           id='tags'
+          disabled={isCreating}
           {...register('tags')}
           placeholder='Separate with comma'
         />
       </FormRow>
 
       <FormRow htmlFor='favorite' label='Is this a favorite place?'>
-        <Checkbox id='favorite' boxLabel='Yes' {...register('favorite')} />
+        <Checkbox
+          id='favorite'
+          disabled={isCreating}
+          boxLabel='Yes'
+          {...register('favorite')}
+        />
       </FormRow>
 
       <FormActionButtons

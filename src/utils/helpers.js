@@ -4,8 +4,10 @@ export function capitalizeFirstLetter(str) {
   return str.trim().charAt(0).toUpperCase() + str.trim().slice(1);
 }
 
-export function createAndCleanUpArray(arr) {
-  return arr
+export function createAndCleanUpArray(str) {
+  if (!str) return;
+
+  return str
     .split(',')
     .map((el) => el.trim())
     .filter(Boolean);

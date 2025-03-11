@@ -37,6 +37,7 @@ function CreateGuideForm({ setShowForm }) {
       <FormRow htmlFor='name' label='Guide name' error={errors?.name?.message}>
         <Input
           id='name'
+          disabled={isCreating}
           {...register('name', {
             required: `Enter a Guide name`,
           })}
@@ -51,6 +52,7 @@ function CreateGuideForm({ setShowForm }) {
       >
         <TextArea
           id='description'
+          disabled={isCreating}
           {...register('description', {
             required: `Enter a description`,
           })}
@@ -61,7 +63,8 @@ function CreateGuideForm({ setShowForm }) {
       <FormRow htmlFor='area' label='Area' error={errors?.area?.message}>
         <Input
           id='area'
-          {...register('description', {
+          disabled={isCreating}
+          {...register('area', {
             required: `Enter one or multiple areas (separated by comma)`,
           })}
           placeholder='SE, NE, SW, NW'
@@ -71,6 +74,7 @@ function CreateGuideForm({ setShowForm }) {
       <FormRow htmlFor='neighborhood' label='Neighborhood'>
         <Input
           id='neighborhood'
+          disabled={isCreating}
           {...register('neighborhood')}
           placeholder='Woodstock'
         />
@@ -79,22 +83,35 @@ function CreateGuideForm({ setShowForm }) {
       <FormRow htmlFor='theme' label='Theme'>
         <Input
           id='theme'
+          disabled={isCreating}
           {...register('theme')}
           placeholder='Brunch, Fine Dining, Taproom'
         />
       </FormRow>
 
       <FormRow htmlFor='location' label='Google Maps URL'>
-        <Input id='location' {...register('location')} placeholder='http://' />
+        <Input
+          id='location'
+          disabled={isCreating}
+          {...register('location')}
+          placeholder='http://'
+        />
       </FormRow>
 
       <FormRow htmlFor='image' label='Image'>
-        <Input type='file' accept='image/*' id='image' {...register('image')} />
+        <Input
+          type='file'
+          accept='image/*'
+          id='image'
+          disabled={isCreating}
+          {...register('image')}
+        />
       </FormRow>
 
       <FormRow htmlFor='tags' label='Tags'>
         <Input
           id='tags'
+          disabled={isCreating}
           {...register('tags')}
           placeholder='Separate with comma'
         />

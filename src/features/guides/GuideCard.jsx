@@ -22,9 +22,11 @@ function GuideCard({ guide }) {
     tags,
   } = guide;
 
+  console.log(name, image ?? 'nope');
+
   const queryClient = useQueryClient();
-  const tagsArray = createAndCleanUpArray(tags);
-  const areaArray = createAndCleanUpArray(area);
+  const tagsArray = tags && createAndCleanUpArray(tags);
+  const areaArray = area && createAndCleanUpArray(area);
 
   // Mutate: Delete guide
   const { isLoading: isDeleting, mutate } = useMutation({
@@ -120,7 +122,7 @@ function GuideCard({ guide }) {
           </p>
 
           {/* Tags */}
-          {areaArray.length || neighborhood || tagsArray.length ? (
+          {areaArray?.length || neighborhood || tagsArray?.length ? (
             <TagsContainer>
               {areaArray?.length > 0 &&
                 areaArray.map((a) => <ButtonTag key={a}>{a}</ButtonTag>)}
