@@ -34,18 +34,18 @@
   }
 }
 
-@utility divider-b {
-  @apply border-b border-violet-300/30;
-}
-@utility divider-y {
-  @apply border-y border-violet-300/30;
-}
+@layer utilities {
+  .divider-b {
+    @apply border-b border-violet-300/30;
+  }
+  .divider-y {
+    @apply border-y border-violet-300/30;
+  }
 
-@utility animation-prep-200 {
-  will-change: auto;
-  transition: all 200ms ease-in-out;
-}
-@utility animation-prep-300 {
-  will-change: auto;
-  transition: all 300ms ease-in-out;
+  .animation-prep-200 {
+    @apply will-change-auto transition-all ease-in-out duration-200;
+  }
+  .animation-prep-300 {
+    @apply will-change-auto transition-all ease-in-out duration-300;
+  }
 }

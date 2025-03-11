@@ -1,16 +1,19 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+
+import { createGuide } from '../../services/apiGuides';
 
 import Form from '../../ui/Form';
 import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
 import Button from '../../ui/Button';
-import { createGuide } from '../../services/apiGuides';
-import toast from 'react-hot-toast';
+import FormError from '../../ui/FormError';
 
-function CreateGuideForm() {
-  const { register, handleSubmit, reset } = useForm();
+function CreateGuideForm({ setShowForm }) {
+  const { register, handleSubmit, reset, formState } = useForm();
+  const { errors } = formState;
 
   const queryClient = useQueryClient();
 
@@ -29,27 +32,38 @@ function CreateGuideForm() {
   function onSubmit(data) {
     mutate(data);
   }
+  function onError() {
+    console.error(errors);
+  }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow htmlFor='name' label='Guide name'>
         <Input
           id='name'
-          {...register('name')}
+          {...register('name', {
+            required: `Please enter a Guide name`,
+          })}
           placeholder='Best foodcarts in Portland'
         />
+        {errors?.name?.message && <FormError>{errors.name.message}</FormError>}
       </FormRow>
 
       <FormRow htmlFor='description' label='Description'>
         <TextArea
           id='description'
-          {...register('description')}
+          {...register('description', {
+            required: `Please enter a description`,
+          })}
           placeholder='Short description of guide'
         />
+        {errors?.description?.message && (
+          <FormError>{errors.description.message}</FormError>
+        )}
       </FormRow>
 
       <FormRow htmlFor='area' label='Area'>
-        <Input id='area' {...register('area')} placeholder='SE/NE/SW/NW' />
+        <Input id='area' {...register('area')} placeholder='SE, NE, SW, NW' />
       </FormRow>
 
       <FormRow htmlFor='neighborhood' label='Neighborhood'>
@@ -85,7 +99,9 @@ function CreateGuideForm() {
       </FormRow>
 
       <div className='flex gap-4 pt-2 pb-4 pr-8 justify-end'>
-        <Button theme='cancel'>Cancel</Button>
+        <Button theme='cancel' type='button' onClick={() => setShowForm(false)}>
+          Cancel
+        </Button>
         <Button type='submit' disabled={isCreating}>
           Submit
         </Button>

@@ -1,7 +1,8 @@
 function Dashboard() {
   return (
-    <div className='bg-dark h-full w-full'>
+    <div className='h-full w-full'>
       <h1>Dashboard</h1>
+      <div className='textstuff'>Text</div>
     </div>
   );
 }

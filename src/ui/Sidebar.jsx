@@ -16,8 +16,8 @@ function Sidebar() {
 
   return (
     <aside
-      className={`relative  h-screen shadow-lg shadow-violet-300/50 ${
-        minimized ? 'w-fit' : 'w-fit sm:w-2/6 sm:min-w-fit'
+      className={`relative h-screen shadow-lg shadow-violet-300/50 ${
+        minimized ? 'w-fit' : 'w-fit sm:w-2/6 sm:min-w-fit max-w-[310px] '
       }`}
     >
       <ButtonIcon
@@ -34,7 +34,7 @@ function Sidebar() {
           {menuItems.map((link) => (
             <NavLink to={link.path} key={link.text}>
               <li
-                className={` flex items-center gap-4 cursor-pointer py-3 px-4 hover:bg-violet-400 active:bg-violet-400 shadow-sm shadow-violet-400 will-change duration-300 ease-out transition-all font-sans tracking-wider rounded-md  ${
+                className={`flex items-center gap-4 cursor-pointer py-3 px-4 hover:bg-violet-400 active:bg-violet-400 shadow-sm shadow-violet-400 animation-prep-300 font-sans tracking-wider rounded-md ${
                   minimized ? 'w-fit' : 'w-fit sm:w-full sm:hover:ml-2'
                 }`}
               >

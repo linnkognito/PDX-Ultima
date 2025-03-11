@@ -22,6 +22,7 @@ function GuideCard({ guide }) {
 
   const queryClient = useQueryClient();
   const tagsArray = tags.split(',');
+  const areaArray = area.split(',');
 
   // Mutate: Delete guide
   const { isLoading: isDeleting, mutate } = useMutation({
@@ -118,7 +119,8 @@ function GuideCard({ guide }) {
           <div className='flex max-w-full flex-wrap py-1 px-2 gap-2 bg-violet-800/30 items-center text-sm rounded-md'>
             <h4 className='font-bold text-violet-400'>Tags:</h4>
 
-            <ButtonTag>{area}</ButtonTag>
+            {areaArray?.length &&
+              areaArray.map((a) => <ButtonTag key={a}>{a}</ButtonTag>)}
             <ButtonTag>{neighborhood}</ButtonTag>
             {tagsArray?.length > 0 &&
               tagsArray.map((tag) => (
