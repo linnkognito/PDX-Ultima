@@ -1,3 +1,4 @@
+import { generateImageName, getImagePath } from '../utils/helpersAPI';
 import supabase from './supabase';
 
 export async function getPlaces({ filter, sortBy }) {
@@ -36,11 +37,28 @@ export async function getPlace(id) {
 }
 
 export async function createPlace(newPlace) {
-  const { data, error } = await supabase.from('places').insert([newPlace]);
+  const imageName = generateImageName(newPlace.image.name);
+  const imagePath = getImagePath('places-images', imageName);
+
+  // Place object
+  const { data, error } = await supabase
+    .from('places')
+    .insert([{ ...newPlace, image: imagePath }]);
 
   if (error) {
     console.error(error);
     throw new Error(`Something went wrong when creating the new place`);
+  }
+
+  // Image
+  const { error: storageError } = await supabase.storage
+    .from('places-images')
+    .upload(imageName, newPlace.image);
+
+  // Error handling image upload
+  if (storageError) {
+    console.error(storageError);
+    throw new Error(`Something went wrong trying to upload the Place's image`);
   }
 
   return data;

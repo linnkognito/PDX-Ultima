@@ -1,3 +1,4 @@
+import { generateImageName, getImagePath } from '../utils/helpersAPI';
 import supabase from './supabase';
 
 export async function getGuides() {
@@ -27,11 +28,28 @@ export async function getGuide(id) {
 }
 
 export async function createGuide(newGuide) {
-  const { data, error } = await supabase.from('guides').insert([newGuide]);
+  const imageName = generateImageName(newGuide.image.name);
+  const imagePath = getImagePath('guides-images', imageName);
+
+  // Guide object
+  const { data, error } = await supabase
+    .from('guides')
+    .insert([{ ...newGuide, image: imagePath }]);
 
   if (error) {
     console.error(error);
     throw new Error(`Something went wrong when creating your new guide`);
+  }
+
+  // Image
+  const { error: storageError } = await supabase.storage
+    .from('guides-images')
+    .upload(imageName, newGuide.image);
+
+  // Error handling image upload
+  if (storageError) {
+    console.error(storageError);
+    throw new Error(`Something went wrong trying to upload the Guide image`);
   }
 
   return data;

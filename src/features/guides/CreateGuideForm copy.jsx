@@ -2,51 +2,47 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-import { createPlace } from '../../services/apiPlaces';
+import { createGuide } from '../../services/apiGuides';
 
 import Form from '../../ui/Form';
 import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
 import FormActionButtons from '../../ui/FormActionButtons';
-import Checkbox from '../../ui/Checkbox';
 
-function CreatePlaceForm({ setShowForm }) {
+function CreateGuideForm({ setShowForm }) {
   const { register, handleSubmit, reset, formState } = useForm();
   const { errors } = formState;
 
   const queryClient = useQueryClient();
 
   const { isLoading: isCreating, mutate } = useMutation({
-    mutationFn: createPlace, // no need to pass args
+    mutationFn: createGuide, // no need to pass args
     onSuccess: () => {
-      toast.success('New place created, just like that');
-      queryClient.invalidateQueries({ queryKey: ['places'] });
+      toast.success('New guide created, pow pow!');
+      queryClient.invalidateQueries({ queryKey: ['guides'] });
       reset();
     },
     onError: (err) => {
-      toast.error(`Creating new place failed (${err.message})`);
+      toast.error(`Creating new guide failed (${err.message})`);
     },
   });
 
   function onSubmit(data) {
     mutate({ ...data, image: data.image[0] });
+    setShowForm(false);
   }
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormRow
-        htmlFor='name'
-        label='Name of place'
-        error={errors?.name?.message}
-      >
+      <FormRow htmlFor='name' label='Guide name' error={errors?.name?.message}>
         <Input
           id='name'
           disabled={isCreating}
           {...register('name', {
-            required: `Enter a Place name`,
+            required: `Enter a Guide name`,
           })}
-          placeholder='Proper Pint'
+          placeholder='Best foodcarts in Portland'
         />
       </FormRow>
 
@@ -61,7 +57,7 @@ function CreatePlaceForm({ setShowForm }) {
           {...register('description', {
             required: `Enter a description`,
           })}
-          placeholder='Dog friendly taproom'
+          placeholder='Short description of guide'
         />
       </FormRow>
 
@@ -76,21 +72,21 @@ function CreatePlaceForm({ setShowForm }) {
         />
       </FormRow>
 
-      <FormRow htmlFor='category' label='Category'>
-        <Input
-          id='category'
-          disabled={isCreating}
-          {...register('category')}
-          placeholder='Beer, Winery, Restaurant'
-        />
-      </FormRow>
-
-      <FormRow htmlFor='reason' label='Go here for...'>
+      <FormRow htmlFor='neighborhood' label='Neighborhood'>
         <Input
           id='neighborhood'
           disabled={isCreating}
           {...register('neighborhood')}
-          placeholder='The cider, Fine dining, Atmosphere'
+          placeholder='Woodstock'
+        />
+      </FormRow>
+
+      <FormRow htmlFor='theme' label='Theme'>
+        <Input
+          id='theme'
+          disabled={isCreating}
+          {...register('theme')}
+          placeholder='Brunch, Fine Dining, Taproom'
         />
       </FormRow>
 
@@ -107,7 +103,6 @@ function CreatePlaceForm({ setShowForm }) {
         <Input
           type='file'
           accept='image/*'
-          id='image'
           disabled={isCreating}
           {...register('image')}
         />
@@ -122,15 +117,6 @@ function CreatePlaceForm({ setShowForm }) {
         />
       </FormRow>
 
-      <FormRow htmlFor='favorite' label='Is this a favorite place?'>
-        <Checkbox
-          id='favorite'
-          disabled={isCreating}
-          boxLabel='Yes'
-          {...register('favorite')}
-        />
-      </FormRow>
-
       <FormActionButtons
         cancel={{ onClick: () => setShowForm(false) }}
         submit={{ disabled: isCreating }}
@@ -139,4 +125,4 @@ function CreatePlaceForm({ setShowForm }) {
   );
 }
 
-export default CreatePlaceForm;
+export default CreateGuideForm;

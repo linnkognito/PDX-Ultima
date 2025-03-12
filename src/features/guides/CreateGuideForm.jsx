@@ -10,8 +10,13 @@ import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
 import FormActionButtons from '../../ui/FormActionButtons';
 
-function CreateGuideForm({ setShowForm }) {
-  const { register, handleSubmit, reset, formState } = useForm();
+function CreateGuideForm({ guideToEdit = {}, setShowForm }) {
+  const { id: editId, ...editValues } = guideToEdit;
+  const isEditing = Boolean(editId);
+
+  const { register, handleSubmit, reset, formState } = useForm({
+    defaultValues: isEditing ? editValues : {},
+  });
   const { errors } = formState;
 
   const queryClient = useQueryClient();
@@ -29,7 +34,8 @@ function CreateGuideForm({ setShowForm }) {
   });
 
   function onSubmit(data) {
-    mutate(data);
+    mutate({ ...data, image: data.image[0] });
+    setShowForm(false);
   }
 
   return (
@@ -102,7 +108,6 @@ function CreateGuideForm({ setShowForm }) {
         <Input
           type='file'
           accept='image/*'
-          id='image'
           disabled={isCreating}
           {...register('image')}
         />
