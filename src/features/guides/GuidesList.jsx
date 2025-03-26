@@ -8,7 +8,7 @@ function GuidesList() {
   const { isLoading, guides } = useGuides();
   const [searchParams] = useSearchParams();
 
-  if (isLoading) <Spinner />;
+  if (isLoading) return <Spinner />;
 
   // Filter
   const filterValue = searchParams.get('area') || 'all';

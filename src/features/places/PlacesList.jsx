@@ -1,4 +1,5 @@
 import { usePlaces } from './usePlaces';
+
 import Spinner from '../../ui/Spinner';
 import PlaceCard from './PlaceCard';
 

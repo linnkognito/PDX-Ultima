@@ -13,9 +13,9 @@ function Filter({ filter, options }) {
 
   return (
     <div className='flex gap-2'>
-      <h4 className='font-bold text-lg tracking-wide text-violet-400 pr-1'>
+      <h3 className='font-bold text-lg tracking-wide text-violet-400 pr-1'>
         Filter:
-      </h4>
+      </h3>
 
       {options.map((op) => (
         <ButtonIcon

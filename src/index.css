@@ -35,6 +35,9 @@
 }
 
 @layer utilities {
+  .divider-t {
+    @apply border-t border-violet-300/30;
+  }
   .divider-b {
     @apply border-b border-violet-300/30;
   }
