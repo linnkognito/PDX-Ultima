@@ -15,11 +15,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <Header />
-
       <body
         className={`${fredoka.className} bg-background text-text min-h-screen`}
       >
+        <Header />
+
         <main>
           {children}
           <Button size='xs'>X-Small</Button>
