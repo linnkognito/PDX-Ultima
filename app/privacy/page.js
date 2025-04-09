@@ -62,7 +62,8 @@ function PrivacyPolicy() {
       <h2>Contact</h2>
       <p>
         Have questions about this policy or your data? Feel free to reach out
-        anytime at <a href='mailto:hello@pdxultima.com'>hello@pdxultima.com</a>.
+        anytime at{' '}
+        <Link href='mailto:hello@pdxultima.com'>hello@pdxultima.com</Link>.
       </p>
     </div>
   );

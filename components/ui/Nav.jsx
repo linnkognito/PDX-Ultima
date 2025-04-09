@@ -1,3 +1,4 @@
+import { DropdownProvider } from '../contexts/DropdownContext';
 import NavButton from './NavButton';
 
 function Nav() {
@@ -16,15 +17,17 @@ function Nav() {
   };
 
   return (
-    <nav aria-label='Main navigation' className='flex gap-10'>
+    <nav aria-label='main navigation' className='flex gap-10'>
       <ul className='flex gap-10'>
-        <li className='group'>
-          <NavButton id='explore' label='Explore' options={options.explore} />
-        </li>
+        <DropdownProvider>
+          <li className='group'>
+            <NavButton id='explore' label='Explore' options={options.explore} />
+          </li>
 
-        <li className='group'>
-          <NavButton id='create' label='Create' options={options.create} />
-        </li>
+          <li className='group'>
+            <NavButton id='create' label='Create' options={options.create} />
+          </li>
+        </DropdownProvider>
       </ul>
     </nav>
   );

@@ -10,6 +10,8 @@
   --color-button: #ffd5a5;
   --color-hover: #f3e0ff;
   --color-glow: #ffd278;
+
+  --padding-div: '';
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -37,5 +39,32 @@
   }
   h3 {
     @apply text-xl font-semibold text-[var(--color-heading)] mb-2;
+  }
+}
+
+@layer components {
+  .p-main {
+    @apply py-6 px-4;
+  }
+  .p-div {
+    @apply py-4 px-6;
+  }
+  .p-header {
+    @apply py-4 px-6;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .bg-semi {
+    @apply bg-background/50;
+  }
+
+  .shadow-standard {
+    @apply shadow-md shadow-par/80;
+  }
+  .shadow-standard-sm {
+    @apply shadow-sm shadow-par/80;
   }
 }

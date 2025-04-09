@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-function Logo({ size }) {
+function Logo({ size, background = false }) {
   const dimensions = {
     xs: { h: '100', w: '100' },
     sm: { h: '150', w: '150' },
@@ -13,7 +13,12 @@ function Logo({ size }) {
   const { h, w } = dimensions[size] || dimensions['md'];
 
   return (
-    <Link href='/' aria-label='Go to PDX Ultima homepage' title='PDX Ultima'>
+    <Link
+      href='/'
+      aria-label='Go to PDX Ultima homepage'
+      title='PDX Ultima'
+      className={background ? 'bg-semi rounded-full p-4 shadow-standard' : ''}
+    >
       <Image
         src='/logo.png'
         height={h}

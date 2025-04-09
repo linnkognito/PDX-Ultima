@@ -6,6 +6,7 @@ const DropdownContext = createContext();
 
 export function DropdownProvider({ children }) {
   const [openId, setOpenId] = useState(null);
+
   return (
     <DropdownContext.Provider value={{ openId, setOpenId }}>
       {children}
