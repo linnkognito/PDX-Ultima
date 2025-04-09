@@ -10,7 +10,7 @@ import ContributeSection from '@/components/index/ContributeSection';
 
 export default function Home() {
   return (
-    <main className='relative h-screen'>
+    <>
       <Hero />
       <FeaturedSection />
       <AreasSection />
@@ -20,6 +20,6 @@ export default function Home() {
       <WeatherSection />
       <SignupSection />
       <ContributeSection />
-    </main>
+    </>
   );
 }

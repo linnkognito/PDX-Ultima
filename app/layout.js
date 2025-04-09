@@ -3,7 +3,6 @@ import { Fredoka } from 'next/font/google';
 const fredoka = Fredoka({ subsets: ['latin'], display: 'swap' });
 
 import Header from '@/components/ui/Header';
-import Button from '@/components/ui/Button';
 import Footer from '@/components/ui/Footer';
 import Image from 'next/image';
 
@@ -31,16 +30,7 @@ export default function RootLayout({ children }) {
         />
 
         <Header />
-
-        <main>
-          {children}
-          <Button size='xs'>X-Small</Button>
-          <Button size='sm'>Small</Button>
-          <Button size='md'>Medium</Button>
-          <Button size='lg'>Large</Button>
-          <Button size='xl'>X-Large</Button>
-        </main>
-
+        <main className='z-100'>{children}</main>
         <Footer />
       </body>
     </html>

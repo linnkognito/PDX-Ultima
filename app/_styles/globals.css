@@ -4,14 +4,14 @@
 @theme inline {
   --color-background: #fff8f2;
   --color-primary: #ffb7d5;
+  --color-primary-dark: #a36b86;
   --color-secondary: #b3d9ff;
+  --color-secondary-dark: #5a94c7;
   --color-heading: #3b3b58;
   --color-par: #5d5d73;
   --color-button: #ffd5a5;
   --color-hover: #f3e0ff;
   --color-glow: #ffd278;
-
-  --padding-div: '';
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -52,6 +52,9 @@
   .p-header {
     @apply py-4 px-6;
   }
+  .p-nav {
+    @apply py-2 pl-10 pr-4;
+  }
 
   .flex-center {
     @apply flex justify-center items-center;
@@ -60,11 +63,26 @@
   .bg-semi {
     @apply bg-background/50;
   }
+  .bg-semi-primary {
+    @apply bg-primary/30;
+  }
 
   .shadow-standard {
     @apply shadow-md shadow-par/80;
   }
   .shadow-standard-sm {
     @apply shadow-sm shadow-par/80;
+  }
+
+  .text-shadow {
+    text-shadow: 1px 1px 2px var(--color-heading);
+  }
+  .text-outline {
+    color: var(--color-primary);
+    text-shadow: -1px -1px 0 var(--color-secondary-dark),
+      1px -1px 0 var(--color-secondary-dark),
+      -1px 1px 0 var(--color-secondary-dark),
+      1px 1px 0 var(--color-secondary-dark),
+      2px 2px 4px var(--color-secondary-dark);
   }
 }

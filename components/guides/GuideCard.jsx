@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
-function GuideCard({ children, title, href, link }) {
+function GuideCard({ children, title, href, label = '', className = '' }) {
   return (
-    <div>
+    <div className={`${className}`}>
       <h2>{title}</h2>
       {children}
-      <Link href={href}>{link}</Link>
+      <Link href={href}>{label}</Link>
     </div>
   );
 }

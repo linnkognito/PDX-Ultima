@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-function Logo({ size, background = false }) {
+function Logo({ size, background = false, className = '' }) {
   const dimensions = {
     xs: { h: '100', w: '100' },
     sm: { h: '150', w: '150' },
@@ -25,6 +25,7 @@ function Logo({ size, background = false }) {
         width={w}
         alt='PDX Ultima logo'
         priority
+        className={className}
       />
     </Link>
   );

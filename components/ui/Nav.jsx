@@ -17,8 +17,8 @@ function Nav() {
   };
 
   return (
-    <nav aria-label='main navigation' className='flex gap-10'>
-      <ul className='flex gap-10'>
+    <nav aria-label='main navigation'>
+      <ul className='flex gap-15'>
         <DropdownProvider>
           <li className='group'>
             <NavButton id='explore' label='Explore' options={options.explore} />

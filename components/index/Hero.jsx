@@ -1,10 +1,8 @@
-import Image from 'next/image';
-
 function Hero() {
   return (
     <article
       aria-labelledby='home-heading'
-      className='relative min-h-screen grow'
+      className='min-h-[calc(100vh-200px)]'
     >
       <h1 id='home-heading'>
         Explore Portland Like a Local – City Guides & Hidden Gems

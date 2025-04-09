@@ -7,7 +7,8 @@ function Button({
 }) {
   const styles = {
     primary: 'border-2 border-primary rounded-full px-2',
-    nav: 'border-2 border-primary backdrop-blur-xs rounded-full px-4 py-1',
+    // nav: 'border-2 border-primary backdrop-blur-xs rounded-full px-4 py-1 text-par bg-semi shadow-standard-sm',
+    nav: 'text-outline text-shadow text-2xl font-semibold uppercase italic tracking-widest',
   };
 
   const sizes = {
