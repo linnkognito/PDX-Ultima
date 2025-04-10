@@ -7,21 +7,18 @@ import ImageFrame from '../ui/ImageFrame';
 function GuideCard({
   title,
   button = {},
-  label = '',
   description = '',
   image = {},
   color = 'bg-primary',
 }) {
   return (
-    <Card
-      className={`${color} flex flex-col h-[560px] max-h-[560px] shadow-standard-sm`}
-    >
-      <h3 className='text-3xl font-semibold tracking-widest text-background text-outline'>
+    <Card className={`${color} flex flex-col gap-2 shadow-standard-sm`}>
+      <h3 className='text-3xl font-semibold tracking-widest text-background text-shadow'>
         {title}
       </h3>
 
       <div className='flex-center flex-col grow'>
-        <ImageFrame borderColor={image.borderColor}>
+        <ImageFrame borderColor={image.borderColor} className='shadow-standard'>
           <Image
             src={image.src}
             fill
@@ -37,7 +34,7 @@ function GuideCard({
           </p>
 
           <Link href={button.href} className='w-full py-1'>
-            <Button theme='guideCard' size='sm' className='uppercase'>
+            <Button theme='guideCard' size='sm' className='mt-auto uppercase'>
               {button.label}
             </Button>
           </Link>

@@ -1,7 +1,7 @@
-function ImageFrame({ children, borderColor }) {
+function ImageFrame({ children, borderColor, className = '' }) {
   return (
     <div
-      className={`relative max-w-full aspect-square mx-auto w-full border-4 ${borderColor} rounded-xl `}
+      className={`relative max-w-full aspect-square mx-auto w-full border-4 rounded-xl ${borderColor} ${className}`}
     >
       {children}
     </div>

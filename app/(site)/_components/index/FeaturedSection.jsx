@@ -1,9 +1,20 @@
+import SectionHeading from '../ui/SectionHeading';
 import GuideCard from '../guides/GuideCard';
 
 function FeaturedSection() {
   return (
-    <section aria-labelledby='featured-heading' className='p-section'>
-      {/* <h2 id='featured-heading'>Featured guides</h2> */}
+    <section
+      aria-labelledby='featured-heading'
+      className='max-w-site mx-auto p-section bg-background'
+    >
+      <SectionHeading
+        id='featured-heading'
+        color='text-heading'
+        className='w-fit mx-auto bg-glow px-4 rounded-xl shadow-standard-sm'
+      >
+        Featured guides
+      </SectionHeading>
+
       <div className='grid grid-cols-3 gap-4'>
         <GuideCard
           title='🍹Cocktails'

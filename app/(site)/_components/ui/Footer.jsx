@@ -24,14 +24,14 @@ function Footer() {
   return (
     <footer
       aria-label='Site footer'
-      className='relative flex gap-4 w-full h-[254px] p-div bg-primary'
+      className='relative flex gap-4 w-full h-[254px] p-div text-heading bg-background shadow-around z-[100]'
     >
       <BackgroundImage position='object-center' />
 
       {/* Logo */}
       <Card
         width='min-w-fit'
-        className='flex-center flex-col bg-background/55 backdrop-blur-xs shadow-standard z-10'
+        className='flex-center flex-col bg-slight shadow-standard z-10'
       >
         <Logo size='sm' />
         <p>Made with rip from the city</p>
@@ -39,14 +39,26 @@ function Footer() {
       </Card>
 
       {/* Footer links */}
-      <div className='flex-center w-full max-w-1/2 h-full p-div rounded-xl bg-semi-primary shadow-standard backdrop-blur-xs z-10'>
+      <div className='flex-center w-2/4 min-w-fit h-full p-div rounded-xl bg-slight shadow-standard z-10'>
         <nav
           aria-label='Footer navigation'
-          className='flex justify-around w-full h-full gap-30 p-div'
+          className='flex justify-around w-full h-full gap-10 p-div'
         >
-          <FooterSection title='Sitemap' links={footerLinks.sitemap} />
-          <FooterSection title='About' links={footerLinks.about} />
-          <FooterSection title='Contact' links={footerLinks.contact} />
+          <FooterSection
+            title='Sitemap'
+            links={footerLinks.sitemap}
+            color='bg-glow'
+          />
+          <FooterSection
+            title='About'
+            links={footerLinks.about}
+            color='bg-primary'
+          />
+          <FooterSection
+            title='Contact'
+            links={footerLinks.contact}
+            color='bg-secondary'
+          />
         </nav>
       </div>
     </footer>
