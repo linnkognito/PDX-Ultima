@@ -4,7 +4,7 @@ import { useDropdownContext } from '../contexts/DropdownContext';
 import Button from './Button';
 import DropdownMenu from './DropdownMenu';
 
-function NavButton({ id, label = '', options }) {
+function NavButton({ id, label = '', className = '', options }) {
   const { openId, setOpenId } = useDropdownContext();
   const isOpen = openId === id;
 
@@ -18,6 +18,7 @@ function NavButton({ id, label = '', options }) {
         aria-haspopup='true'
         aria-expanded={isOpen}
         aria-controls={`${id}-dropdown`}
+        className={className}
         onClick={handleClick}
       >
         {label}

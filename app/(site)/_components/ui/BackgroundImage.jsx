@@ -1,13 +1,14 @@
 import Image from 'next/image';
 
-function BackgroundImage({ position = 'object-top' }) {
+function BackgroundImage({ position = 'object-top', opacity = 'opacity-100' }) {
   return (
     <Image
       src='/bg.png'
       fill
       priority
+      sizes='100vw'
       alt='Stylized version of the Portland, Oregon skyline'
-      className={`${position} object-cover z-0`}
+      className={`${position} ${opacity} object-cover absolute z-0`}
     />
   );
 }

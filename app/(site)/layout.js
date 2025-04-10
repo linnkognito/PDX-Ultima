@@ -2,10 +2,8 @@ import '@/app/_styles/globals.css';
 import { Fredoka } from 'next/font/google';
 const fredoka = Fredoka({ subsets: ['latin'], display: 'swap' });
 
-import Header from '@/components/ui/Header';
-import Footer from '@/components/ui/Footer';
-import Image from 'next/image';
-import BackgroundImage from '@/components/ui/BackgroundImage';
+import Header from '@/app/(site)/_components/ui/Header';
+import Footer from '@/app/(site)/_components/ui/Footer';
 
 export const metadata = {
   title: {
@@ -17,15 +15,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  console.log('RootLayout applied');
   return (
     <html lang='en'>
       <body
         className={`${fredoka.className} flex flex-col bg-background text-text min-w-screen max-w-screen min-h-screen`}
       >
-        <BackgroundImage />
-
         <Header />
-        <main className='z-5'>{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

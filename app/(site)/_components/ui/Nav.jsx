@@ -14,6 +14,10 @@ function Nav() {
       { label: 'New Guide', href: '/guides/create' },
       { label: 'New Place', href: '/places/create' },
     ],
+    about: [
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+    ],
   };
 
   return (
@@ -21,11 +25,30 @@ function Nav() {
       <ul className='flex gap-15'>
         <DropdownProvider>
           <li className='group'>
-            <NavButton id='explore' label='Explore' options={options.explore} />
+            <NavButton
+              id='explore'
+              label='Explore'
+              options={options.explore}
+              className='text-glow'
+            />
           </li>
 
           <li className='group'>
-            <NavButton id='create' label='Create' options={options.create} />
+            <NavButton
+              id='create'
+              label='Create'
+              options={options.create}
+              className='text-primary'
+            />
+          </li>
+
+          <li className='group'>
+            <NavButton
+              id='about'
+              label='About'
+              options={options.about}
+              className='text-secondary'
+            />
           </li>
         </DropdownProvider>
       </ul>
