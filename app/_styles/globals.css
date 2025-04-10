@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-/* @import './theme.css'; */
 
 @theme inline {
   --color-background: #fff8f2;
@@ -36,13 +35,13 @@
     @apply text-par w-fit bg-heading;
   }
   h1 {
-    @apply text-9xl font-extrabold text-primary will-change-transform;
+    @apply text-9xl font-extrabold text-primary;
   }
   h2 {
     @apply text-2xl font-bold tracking-tight mb-3;
   }
   h3 {
-    @apply text-xl font-semibold  mb-2;
+    @apply text-xl font-semibold mb-2;
   }
 
   ::selection {

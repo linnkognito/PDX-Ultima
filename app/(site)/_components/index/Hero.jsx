@@ -6,7 +6,7 @@ import Button from '../ui/Button';
 function Hero() {
   return (
     <section className='relative w-screen h-screen min-h-fit overflow-hidden bg-par shadow-around'>
-      <BackgroundImage opacity='opacity-100' />
+      <BackgroundImage opacity='opacity-80' />
 
       <div className='relative max-w-site mx-auto z-10'>
         <Header />
@@ -15,7 +15,7 @@ function Hero() {
           aria-labelledby='home-heading'
           className='flex flex-col items-center gap-4 w-fit h-full pl-30 pt-20'
         >
-          <div className='w-full p-div'>
+          <div className='w-full p-div space-y-4'>
             <h1 id='home-heading' className='w-fit text-shadow-small'>
               <span className='text-secondary tracking-wider'>Explore</span>{' '}
               <span className='tracking-wide'>Portland</span> <br />

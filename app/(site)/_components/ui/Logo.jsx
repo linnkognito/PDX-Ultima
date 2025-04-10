@@ -17,7 +17,9 @@ function Logo({ size, background = false, className = '' }) {
       href='/'
       aria-label='Go to PDX Ultima homepage'
       title='PDX Ultima'
-      className={background ? 'bg-slight rounded-full p-4 shadow-standard' : ''}
+      className={
+        background ? 'bg-background/90 rounded-full p-4 shadow-standard' : ''
+      }
     >
       <Image
         src='/logo.png'

@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import ImageFrame from '../ui/ImageFrame';
 import SectionHeading from '../ui/SectionHeading';
+import AreaCard from '../guides/AreaCard';
 
 function AreasSection() {
   const areas = [
@@ -42,7 +41,7 @@ function AreasSection() {
   return (
     <section
       aria-labelledby='areas-heading'
-      className='w-full p-section bg-hover'
+      className='w-full p-section bg-hover shadow-around'
     >
       <SectionHeading
         id='areas-heading'
@@ -52,28 +51,9 @@ function AreasSection() {
         🗺️ Explore by area
       </SectionHeading>
 
-      <div className='grid grid-cols-4 gap-2 cursor-pointer'>
+      <div className='grid grid-cols-4 gap-4 cursor-pointer'>
         {areas.map((area) => (
-          <ImageFrame
-            key={area.area}
-            borderColor={area.borderColor}
-            className='group'
-          >
-            <Image
-              src={area.src}
-              fill
-              alt={area.alt}
-              className='object-cover rounded-xl'
-            />
-
-            <SectionHeading
-              tag='h4'
-              color={area.color}
-              className='absolute text-8xl inset-0 z-10 flex-center font-semibold'
-            >
-              {area.area.toUpperCase()}
-            </SectionHeading>
-          </ImageFrame>
+          <AreaCard key={area.area} area={area} />
         ))}
       </div>
     </section>

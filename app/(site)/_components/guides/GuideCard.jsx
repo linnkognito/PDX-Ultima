@@ -23,6 +23,7 @@ function GuideCard({
             src={image.src}
             fill
             priority
+            sizes='33vw'
             alt={image.alt}
             className='object-cover rounded-xl'
           />
