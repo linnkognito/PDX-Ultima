@@ -3,12 +3,15 @@ function Button({
   theme = 'primary',
   size,
   disabled = false,
+  className = '',
   ...props
 }) {
   const styles = {
     primary: 'border-2 border-primary rounded-full px-2',
-    // nav: 'border-2 border-primary backdrop-blur-xs rounded-full px-4 py-1 text-par bg-semi shadow-standard-sm',
     nav: 'text-outline text-shadow text-2xl font-semibold uppercase italic tracking-widest',
+    cta: 'bg-glow backdrop-blur-xs border-2 border-primary rounded-full px-2 py-4 text-4xl font-semibold tracking-widest text-background text-outline shadow-standard',
+    guideCard:
+      'px-2 py-[1px] bg-primary/50 border-2 border-background/50 rounded-full font-medium tracking-widest text-background shadow-standard text-shadow',
   };
 
   const sizes = {
@@ -21,7 +24,7 @@ function Button({
 
   return (
     <button
-      className={`${styles[theme]} ${sizes[size]} ${
+      className={`${styles[theme]} ${className} ${sizes[size]} ${
         disabled ? 'cursor-not-allowed' : 'cursor-pointer'
       } min-w-fit`}
       disabled={disabled}

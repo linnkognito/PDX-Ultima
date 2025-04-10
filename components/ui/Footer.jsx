@@ -1,80 +1,54 @@
-import Link from 'next/link';
 import Card from '../containers/Card';
 import Logo from './Logo';
+import FooterSection from './FooterSection';
+import BackgroundImage from './BackgroundImage';
 
 function Footer() {
+  const footerLinks = {
+    sitemap: [
+      { href: '/guides', label: 'Guides' },
+      { href: '/places', label: 'Places' },
+      { href: '/auth/login', label: 'Login' },
+    ],
+    about: [
+      { href: '/about', label: 'About' },
+      { href: '/privacy', label: 'Privacy' },
+    ],
+    contact: [
+      { href: '/contact', label: 'Contact' },
+      { href: 'mainto:linnesjohansen@gmail.com', label: 'Email' },
+      { href: '/contact/constribute', label: 'Contribute' },
+    ],
+  };
+
   return (
     <footer
       aria-label='Site footer'
-      className='flex gap-1 w-full p-div bg-primary'
+      className='relative flex gap-4 w-full h-[254px] p-div bg-primary'
     >
-      <Card width='min-w-fit' className='flex-center flex-col bg-white'>
+      <BackgroundImage position='object-center' />
+
+      {/* Logo */}
+      <Card
+        width='min-w-fit'
+        className='flex-center flex-col bg-background/55 backdrop-blur-xs shadow-standard z-10'
+      >
         <Logo size='sm' />
         <p>Made with rip from the city</p>
         <p className='text-xs'>&copy; Linn Johansen</p>
       </Card>
 
-      <Card width='flex-center flex-col w-full' className='bg-white'>
+      {/* Footer links */}
+      <div className='flex-center w-full max-w-1/2 h-full p-div rounded-xl bg-semi-primary shadow-standard backdrop-blur-xs z-10'>
         <nav
           aria-label='Footer navigation'
-          className='flex gap-40 w-full p-div'
+          className='flex justify-around w-full h-full gap-30 p-div'
         >
-          <div>
-            <h3 className='uppercase'>Sitemap</h3>
-            <ul>
-              <li>
-                <Link href='/guides' className='hover:underline'>
-                  Guides
-                </Link>
-              </li>
-              <li>
-                <Link href='/places' className='hover:underline'>
-                  Places
-                </Link>
-              </li>
-
-              <li>
-                <Link href='/auth/login' className='hover:underline'>
-                  Login
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className='uppercase'>About</h3>
-            <ul>
-              <li>
-                <Link href='/about' className='hover:underline'>
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href='/privacy' className='hover:underline'>
-                  Privacy
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className='uppercase'>Contact</h3>
-            <ul>
-              <li>
-                <Link
-                  href='mainto:linnesjohansen@gmail.com'
-                  className='hover:underline'
-                >
-                  Email
-                </Link>
-              </li>
-              <li>
-                <Link href='/contact/constribute' className='hover:underline'>
-                  Contribute
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <FooterSection title='Sitemap' links={footerLinks.sitemap} />
+          <FooterSection title='About' links={footerLinks.about} />
+          <FooterSection title='Contact' links={footerLinks.contact} />
         </nav>
-      </Card>
+      </div>
     </footer>
   );
 }

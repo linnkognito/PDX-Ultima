@@ -5,6 +5,7 @@ const fredoka = Fredoka({ subsets: ['latin'], display: 'swap' });
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import Image from 'next/image';
+import BackgroundImage from '@/components/ui/BackgroundImage';
 
 export const metadata = {
   title: {
@@ -21,16 +22,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${fredoka.className} flex flex-col bg-background text-text min-w-screen max-w-screen min-h-screen`}
       >
-        <Image
-          src='/bg.png'
-          fill
-          priority
-          alt='Stylized version of the Portland, Oregon skyline'
-          className='object-top object-cover z-0'
-        />
+        <BackgroundImage />
 
         <Header />
-        <main className='z-100'>{children}</main>
+        <main className='z-5'>{children}</main>
         <Footer />
       </body>
     </html>

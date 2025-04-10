@@ -4,7 +4,7 @@ function DropdownMenu({ id, options }) {
   if (!options) return null;
 
   return (
-    <div className='absolute border border-secondary-dark bg-primary/70 rounded-xl top-13 w-40 p-div backdrop-blur-sm z-100'>
+    <div className='absolute border border-secondary-dark bg-primary/70 rounded-xl top-13 w-40 p-div backdrop-blur-sm z-100 shadow-standard'>
       <ul
         id={`${id}-dropdown`}
         role='menu'
