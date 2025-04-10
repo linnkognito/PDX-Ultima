@@ -11,7 +11,7 @@ function Button({
     nav: 'text-outline text-shadow text-2xl font-semibold uppercase italic tracking-widest',
     cta: 'bg-glow backdrop-blur-xs border-2 border-primary rounded-full px-2 py-4 text-4xl font-semibold tracking-widest text-background text-outline shadow-standard',
     guideCard:
-      'px-2 py-[1px] bg-primary/50 border-2 border-background/50 rounded-full font-medium tracking-widest text-background shadow-standard text-shadow',
+      'w-full px-2 py-[1px] bg-primary/50 border-2 border-background/50 rounded-full font-medium tracking-widest text-background shadow-standard text-shadow',
   };
 
   const sizes = {
