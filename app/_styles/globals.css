@@ -38,10 +38,10 @@
     @apply text-9xl font-extrabold text-primary;
   }
   h2 {
-    @apply text-2xl font-bold tracking-tight mb-3;
+    @apply text-2xl font-bold tracking-tight;
   }
   h3 {
-    @apply text-xl font-semibold mb-2;
+    @apply text-xl font-semibold;
   }
 
   ::selection {
@@ -87,6 +87,9 @@
     @apply bg-primary/30;
   }
 
+  .shadow-around-sm {
+    @apply shadow-[0_0_7px] shadow-heading;
+  }
   .shadow-around {
     @apply shadow-[0_0_10px] shadow-heading;
   }

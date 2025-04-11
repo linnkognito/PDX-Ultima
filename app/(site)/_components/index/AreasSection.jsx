@@ -41,12 +41,12 @@ function AreasSection() {
   return (
     <section
       aria-labelledby='areas-heading'
-      className='w-full p-section bg-hover shadow-around'
+      className='w-full pt-15 pb-25 px-20 bg-hover shadow-around z-10'
     >
       <SectionHeading
         id='areas-heading'
         color='text-lavender'
-        className='w-fit mx-auto px-3'
+        className='w-fit mx-auto pb-6'
       >
         🗺️ Explore by area
       </SectionHeading>

@@ -2,6 +2,7 @@ function SectionHeading({
   children,
   tag: Tag = 'h3',
   color = 'text-glow',
+  margin = 'mb-6',
   textShadow = false,
   visuallyHidden = false,
   className = '',
@@ -9,9 +10,9 @@ function SectionHeading({
 }) {
   return (
     <Tag
-      className={`${className} ${color} ${visuallyHidden ? 'sr-only' : ''} ${
-        textShadow ? 'text-shadow' : ''
-      } mb-6 text-5xl tracking-wide`}
+      className={`${className} ${color} ${margin} ${
+        visuallyHidden ? 'sr-only' : ''
+      } ${textShadow ? 'text-shadow' : ''} text-5xl tracking-wide`}
       {...props}
     >
       {children}

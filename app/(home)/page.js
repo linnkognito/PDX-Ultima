@@ -14,7 +14,7 @@ export default function Home() {
       <Hero />
       <FeaturedSection />
       <AreasSection />
-      {/* <ThemeSection /> */}
+      <ThemeSection />
       {/* <SearchSection /> */}
       {/* <LocalsSection /> */}
       {/* <WeatherSection /> */}
