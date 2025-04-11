@@ -3,8 +3,15 @@ import SectionHeading from '../ui/SectionHeading';
 
 function SearchSection() {
   return (
-    <section className='w-full pt-16 pb-16 bg-secondary'>
-      <SectionHeading textShadow={false} className='w-fit mx-auto'>
+    <section
+      aria-labelledby='search-heading'
+      className='w-full pt-16 pb-16 bg-secondary'
+    >
+      <SectionHeading
+        id='search-heading'
+        textShadow={false}
+        className='w-fit mx-auto'
+      >
         Can't find what you're looking for?
       </SectionHeading>
       <Searchbar
