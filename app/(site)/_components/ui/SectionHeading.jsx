@@ -1,7 +1,7 @@
 function SectionHeading({
   children,
   tag: Tag = 'h3',
-  color = 'text-glow',
+  color = 'text-heading',
   margin = 'mb-6',
   textShadow = false,
   visuallyHidden = false,

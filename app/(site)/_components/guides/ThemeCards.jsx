@@ -1,3 +1,4 @@
+import Button from '../ui/Button';
 import ThemeCard from './ThemeCard';
 
 function ThemeCards({ children }) {
@@ -42,16 +43,6 @@ function ThemeCards({ children }) {
         alt: 'Illustration of the Portland skyline during sunset',
       },
     },
-    {
-      emoji: '🍸',
-      color: 'bg-cyan-300',
-      label: 'Ciders',
-      labelColor: 'bg-glow-light',
-      image: {
-        src: '/cocktail.png',
-        alt: 'Illustration of the Portland skyline during sunset',
-      },
-    },
 
     {
       emoji: '🍸',
@@ -59,20 +50,11 @@ function ThemeCards({ children }) {
       label: 'Foodcarts',
       labelColor: 'bg-glow-light',
       image: {
-        src: '/cocktail.png',
+        src: '/foodcart.png',
         alt: 'Illustration of the Portland skyline during sunset',
       },
     },
-    {
-      emoji: '🍸',
-      color: 'bg-blue-400',
-      label: 'Speedy',
-      labelColor: 'bg-glow-light',
-      image: {
-        src: '/cocktail.png',
-        alt: 'Illustration of the Portland skyline during sunset',
-      },
-    },
+
     {
       emoji: '🥞',
       color: 'bg-emerald-200',
@@ -83,22 +65,13 @@ function ThemeCards({ children }) {
         alt: 'Illustration of the Portland skyline during sunset',
       },
     },
-    {
-      emoji: '🍸',
-      color: 'bg-heading',
-      label: 'Thrifting',
-      labelColor: 'bg-glow-light',
-      image: {
-        src: '/cocktail.png',
-        alt: 'Illustration of the Portland skyline during sunset',
-      },
-    },
   ];
 
   return (
-    <div className='grid grid-cols-3 grid-rows-3 w-full h-[700px] py-6 px-6 bg-glow-light'>
+    <div className='grid grid-cols-3 grid-rows-2 gap-y-4 w-full py-6 px-6 bg-glow-light'>
       {themes?.map((theme) => (
         <ThemeCard
+          key={theme.label}
           image={theme.image}
           color={theme.color}
           label={theme.label}
@@ -107,10 +80,10 @@ function ThemeCards({ children }) {
         />
       ))}
 
-      <div className='w-full col-span-3'>
-        {/* <Button theme='guideCard' className='pt-1 my-2'>
+      <div className='flex-center col-span-3'>
+        <Button theme='theme' size='sm' className='pt-1 my-3 mx-auto uppercase'>
           More themes
-        </Button> */}
+        </Button>
       </div>
     </div>
   );

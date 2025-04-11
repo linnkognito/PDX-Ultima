@@ -15,7 +15,7 @@ export default function Home() {
       <FeaturedSection />
       <AreasSection />
       <ThemeSection />
-      {/* <SearchSection /> */}
+      <SearchSection />
       {/* <LocalsSection /> */}
       {/* <WeatherSection /> */}
       {/* <SignupSection /> */}
