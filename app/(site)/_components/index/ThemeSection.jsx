@@ -6,7 +6,7 @@ function ThemeSection() {
   return (
     <section
       aria-labelledby='theme-heading'
-      className='h-fit pt-16 pb-20 bg-background'
+      className='h-fit pt-16 pb-20 bg-background z-10'
     >
       <div className='grid grid-cols-2 min-h-fit'>
         {/* Left column */}

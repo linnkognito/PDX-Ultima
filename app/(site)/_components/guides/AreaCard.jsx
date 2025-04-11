@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import ImageFrame from '../ui/ImageFrame';
 import SectionHeading from '../ui/SectionHeading';
-import Link from 'next/link';
 
 function AreaCard({ area }) {
   return (
     <ImageFrame
+      width='max-w-[315px]'
       borderColor={area.borderColor}
       className='group shadow-standard-sm'
     >

@@ -101,7 +101,7 @@
   }
 
   .max-w-site {
-    @apply max-w-[1720px];
+    @apply max-w-[1520px];
   }
 
   .text-shadow {

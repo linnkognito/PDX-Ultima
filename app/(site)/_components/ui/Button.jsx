@@ -11,8 +11,7 @@ function Button({
     primary: 'border-2 border-primary rounded-full px-2',
     nav: 'text-shadow text-3xl font-semibold uppercase  tracking-widest',
     cta: 'bg-glow border-2 border-background rounded-full px-2 py-4 text-4xl font-semibold tracking-widest text-heading',
-    guideCard:
-      'w-full px-2 py-1 bg-primary border-2 border-background/50 rounded-full font-medium tracking-widest text-heading shadow-standard',
+    card: 'w-full px-2 py-1 bg-primary border-2 border-background/50 rounded-full font-medium tracking-widest text-heading shadow-standard mt-auto uppercase',
     theme:
       'w-1/2 px-2 py-1 bg-primary border-2 border-background/50 rounded-full font-medium tracking-widest text-heading shadow-standard',
   };

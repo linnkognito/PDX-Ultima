@@ -7,12 +7,16 @@ import ImageFrame from '../ui/ImageFrame';
 function GuideCard({
   title,
   button = {},
+  width = 'max-w-[400px]',
   description = '',
   image = {},
   color = 'bg-primary',
 }) {
   return (
-    <Card className={`${color} flex flex-col gap-2 shadow-standard-sm`}>
+    <Card
+      width={width}
+      className={`${color} flex flex-col gap-2 shadow-standard-sm`}
+    >
       <h3 className='text-3xl font-semibold tracking-widest text-background text-shadow'>
         {title}
       </h3>
@@ -35,7 +39,7 @@ function GuideCard({
           </p>
 
           <Link href={button.href} className='w-full py-1'>
-            <Button theme='guideCard' size='sm' className='mt-auto uppercase'>
+            <Button theme='card' size='sm'>
               {button.label}
             </Button>
           </Link>

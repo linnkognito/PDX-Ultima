@@ -41,20 +41,22 @@ function AreasSection() {
   return (
     <section
       aria-labelledby='areas-heading'
-      className='w-full pt-15 pb-25 px-20 bg-hover shadow-around z-10'
+      className='relative w-full pt-15 pb-25 px-20 bg-hover shadow-around z-50'
     >
-      <SectionHeading
-        id='areas-heading'
-        color='text-lavender'
-        className='w-fit mx-auto pb-6'
-      >
-        🗺️ Explore by area
-      </SectionHeading>
+      <div className='max-w-site mx-auto'>
+        <SectionHeading
+          id='areas-heading'
+          color='text-lavender'
+          className='w-fit mx-auto pb-6'
+        >
+          🗺️ Explore by area
+        </SectionHeading>
 
-      <div className='grid grid-cols-4 gap-4 cursor-pointer'>
-        {areas.map((area) => (
-          <AreaCard key={area.area} area={area} />
-        ))}
+        <div className='grid grid-cols-4 gap-4 w-full mx-auto cursor-pointer'>
+          {areas.map((area) => (
+            <AreaCard key={area.area} area={area} />
+          ))}
+        </div>
       </div>
     </section>
   );

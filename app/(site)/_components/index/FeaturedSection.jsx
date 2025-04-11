@@ -7,18 +7,19 @@ function FeaturedSection() {
       aria-labelledby='featured-heading'
       className='w-full p-section bg-background'
     >
-      <div className='max-w-site mx-auto'>
+      <div className='max-w-site mx-auto pt-10 pb-15 '>
         <SectionHeading
           id='featured-heading'
           color='text-heading'
-          className='w-fit mx-auto bg-glow px-4 rounded-xl shadow-standard-sm'
+          className='w-fit mx-auto bg-glow px-4 py-3 rounded-xl shadow-standard-sm'
         >
           Featured guides
         </SectionHeading>
 
-        <div className='grid grid-cols-3 gap-4'>
+        <div className='grid grid-cols-3 gap-10 pt-3 w-fit mx-auto'>
           <GuideCard
             title='🍹Cocktails'
+            width='max-w-[400px]'
             color='bg-gradient-to-t from-primary/30 to-glow'
             button={{ href: '/guides/featured', label: 'Cocktail guide' }}
             image={{
@@ -32,6 +33,7 @@ function FeaturedSection() {
 
           <GuideCard
             title='🌯Best Burritos'
+            width='max-w-[400px]'
             color='bg-gradient-to-t from-glow/30 to-primary'
             button={{ href: '/guides/featured', label: 'Burrito guide' }}
             image={{
@@ -44,6 +46,7 @@ function FeaturedSection() {
 
           <GuideCard
             title='🍊Fine dining'
+            width='max-w-[400px]'
             color='bg-gradient-to-t from-secondary/30 to-hover'
             button={{ href: '/guides/featured', label: 'View guide' }}
             image={{
