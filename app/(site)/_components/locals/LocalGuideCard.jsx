@@ -4,7 +4,14 @@ import ImageFrame from '../ui/ImageFrame';
 import IconSocial from '../ui/IconSocial';
 import Button from '../ui/Button';
 
-function LocalGuideCard({ name, bio, emoji, favGuide, image, color }) {
+function LocalGuideCard({
+  name,
+  bio,
+  emoji,
+  favGuide,
+  image,
+  cardColor = 'bg-hover',
+}) {
   const socials = [
     { href: 'https//www.instagram.com', network: 'instagram' },
     { href: 'https//www.reddit.com', network: 'reddit' },
@@ -14,16 +21,18 @@ function LocalGuideCard({ name, bio, emoji, favGuide, image, color }) {
   return (
     <Card
       className={`${
-        color || 'bg-hover'
+        cardColor || 'bg-hover'
       } flex flex-col gap-2 shadow-standard-sm`}
     >
       <h3 className='text-3xl font-semibold tracking-widest text-heading'>
-        {emoji || '🍒'}
+        <span className='text-shadow'>{emoji || '🍒'}</span>
         {name}
       </h3>
 
       <div className='flex-col flex-center grow'>
-        <div className='flex w-full bg-glow rounded-xl shadow-standard'>
+        <div
+          className={`flex w-full rounded-xl shadow-standard ${image.borderColor}`}
+        >
           <ImageFrame
             borderWidth='border-y-10 border-l-10 border-r-none'
             borderColor={image.borderColor || 'bg-glow border-glow'}

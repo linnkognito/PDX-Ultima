@@ -114,6 +114,17 @@
     text-shadow: 2px 2px 3px var(--color-heading);
   }
 
+  .notepad-bg {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 39px,
+      var(--color-primary) 39px,
+      var(--color-primary) 40px
+    );
+    line-height: 2.5rem; /* Optional: aligns text baseline to lines (40px) */
+  }
+
   .anim-color {
     @apply transition-colors duration-300 ease-in-out;
   }

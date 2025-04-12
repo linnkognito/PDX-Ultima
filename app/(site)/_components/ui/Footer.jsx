@@ -2,6 +2,7 @@ import Card from '../containers/Card';
 import Logo from './Logo';
 import FooterSection from './FooterSection';
 import BackgroundImage from './BackgroundImage';
+import Weather from '../widgets/Weather';
 
 function Footer() {
   const footerLinks = {
@@ -61,6 +62,8 @@ function Footer() {
           />
         </nav>
       </div>
+
+      <Weather />
     </footer>
   );
 }
