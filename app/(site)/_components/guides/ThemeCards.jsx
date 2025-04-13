@@ -81,7 +81,12 @@ function ThemeCards({ children }) {
       ))}
 
       <div className='flex-center col-span-3'>
-        <Button theme='theme' size='sm' className='pt-1 my-3 mx-auto uppercase'>
+        <Button
+          theme='theme'
+          color='bg-primary'
+          size='sm'
+          className='pt-1 my-3 mx-auto uppercase'
+        >
           More themes
         </Button>
       </div>

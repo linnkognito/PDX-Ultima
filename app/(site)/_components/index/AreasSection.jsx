@@ -49,7 +49,7 @@ function AreasSection() {
           color='text-lavender'
           className='w-fit mx-auto pb-6'
         >
-          🗺️ Explore by area
+          <span className='text-shadow'>🗺️</span> Explore by area
         </SectionHeading>
 
         <div className='grid grid-cols-4 gap-4 w-full mx-auto cursor-pointer'>

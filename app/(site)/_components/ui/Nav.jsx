@@ -1,4 +1,5 @@
 import { DropdownProvider } from '../contexts/DropdownContext';
+import Logo from './Logo';
 import NavButton from './NavButton';
 
 function Nav() {

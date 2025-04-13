@@ -2,6 +2,7 @@ function Button({
   children,
   theme = 'primary',
   size,
+  color,
   disabled = false,
   textColor = '',
   className = '',
@@ -11,11 +12,9 @@ function Button({
     primary: 'border-2 border-primary rounded-full px-2',
     nav: 'text-shadow text-3xl font-semibold uppercase  tracking-widest',
     cta: 'bg-glow border-2 border-background rounded-full px-2 py-4 text-4xl font-semibold tracking-widest text-heading',
-    card: 'w-full px-2 py-1 bg-primary border-2 border-background/50 rounded-full font-medium tracking-widest text-heading shadow-standard mt-auto uppercase',
-    cardCta:
-      'w-full px-2 py-1 bg-glow-light border-2 border-background/50 rounded-full font-medium tracking-widest text-heading shadow-standard mt-auto uppercase',
+    card: 'w-full px-2 py-1 border-2 border-background/50 rounded-full font-medium tracking-widest text-heading shadow-standard mt-auto uppercase',
     theme:
-      'w-1/2 px-2 py-1 bg-primary border-2 border-background/50 rounded-full font-medium tracking-widest text-heading shadow-standard',
+      'w-1/2 px-2 py-1 border-2 border-background/50 rounded-full font-medium tracking-widest text-heading shadow-standard',
   };
 
   const sizes = {
@@ -26,11 +25,18 @@ function Button({
     xl: 'text-3xl',
   };
 
+  const colors = {
+    primary: 'bg-primary',
+    card: 'bg-primary',
+    glowLight: 'bg-glow-light',
+    cta: 'bg-primary',
+  };
+
   return (
     <button
-      className={`${styles[theme]} ${className} ${sizes[size]} ${
-        disabled ? 'cursor-not-allowed' : 'cursor-pointer'
-      } min-w-fit`}
+      className={`${styles[theme]} ${color || colors[theme]} ${className} ${
+        sizes[size]
+      } ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} min-w-fit`}
       disabled={disabled}
       {...props}
     >

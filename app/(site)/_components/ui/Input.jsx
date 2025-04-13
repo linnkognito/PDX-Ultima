@@ -23,7 +23,7 @@ const Input = forwardRef(function Input(
       aria-labelledby={`${id}-label`}
       required={required}
       autoComplete={autoComplete}
-      className={`${className} appearance-none border-2 border-primary rounded-full text-heading placeholder:text-par/50 focus:outline-none focus:ring-2 focus:ring-glow px-4 py-1 bg-background/90`}
+      className={`${className} appearance-none border-2 border-primary rounded-full text-heading placeholder:text-par/60 focus:outline-none focus:ring-2 focus:ring-glow px-4 py-1 bg-background`}
       {...props}
     />
   );

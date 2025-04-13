@@ -29,7 +29,11 @@ function Hero() {
           </div>
 
           <Link href='/guides' className='block mx-auto w-1/2 mt-10'>
-            <Button theme='cta' className='w-full mb-10 shadow-standard'>
+            <Button
+              theme='cta'
+              color='bg-primary'
+              className='w-full mb-10 shadow-standard'
+            >
               Start Exploring
             </Button>
           </Link>

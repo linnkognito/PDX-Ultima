@@ -5,6 +5,7 @@ import IconSocial from '../ui/IconSocial';
 import Button from '../ui/Button';
 
 function LocalGuideCard({
+  id,
   name,
   bio,
   emoji,
@@ -13,18 +14,25 @@ function LocalGuideCard({
   cardColor = 'bg-hover',
 }) {
   const socials = [
-    { href: 'https//www.instagram.com', network: 'instagram' },
-    { href: 'https//www.reddit.com', network: 'reddit' },
-    { href: 'https//www.facebook.com', network: 'facebook' },
+    { href: 'https://www.instagram.com', network: 'instagram' },
+    { href: 'https://www.reddit.com', network: 'reddit' },
+    { href: 'https://www.facebook.com', network: 'facebook' },
   ];
 
   return (
     <Card
+      tabIndex='0'
+      role='listitem'
+      aria-labelledby={`local-${id}-name`}
+      aria-describedby={`local-${id}-bio`}
       className={`${
         cardColor || 'bg-hover'
-      } flex flex-col gap-2 shadow-standard-sm`}
+      } flex flex-col gap-2 shadow-standard-sm `}
     >
-      <h3 className='text-3xl font-semibold tracking-widest text-heading'>
+      <h3
+        id={`local-${id}-name`}
+        className='text-3xl font-semibold tracking-widest text-heading'
+      >
         <span className='text-shadow'>{emoji || '🍒'}</span>
         {name}
       </h3>
@@ -49,7 +57,7 @@ function LocalGuideCard({
           </ImageFrame>
 
           {/* Socials */}
-          <div className='flex flex-col justify-center w-fit mx-auto gap-4 pt-6 px-3 h-fit'>
+          <div className='flex flex-col justify-center w-fit mx-auto gap-2 pt-6 px-3 h-fit'>
             {socials.map((social) => (
               <IconSocial
                 key={social.network}

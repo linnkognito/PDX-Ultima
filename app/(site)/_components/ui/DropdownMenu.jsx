@@ -1,24 +1,29 @@
+import { ArrowRightIcon } from '@heroicons/react/16/solid';
 import Link from 'next/link';
 
 function DropdownMenu({ id, options }) {
   if (!options) return null;
 
   return (
-    <div className='absolute border border-secondary-dark bg-primary/70 rounded-xl top-13 w-40 p-div backdrop-blur-sm z-100 shadow-standard'>
+    <div className='absolute backdrop-blur-sm rounded-t-none rounded-xl top-[51px] w-60 border-[1.5px] border-t-0 border-background/60 z-100'>
       <ul
         id={`${id}-dropdown`}
         role='menu'
         aria-labelledby={`${id}-button`}
-        className='flex flex-col gap-4 '
+        className='flex flex-col'
       >
         {options?.map((option) => (
-          <li key={option.label} role='none'>
+          <li
+            key={option.label}
+            role='none'
+            className='w-full py-2 last:pb-[5px] pl-3 pr-2 pb-1 hover:bg-primary/60 last:rounded-b-xl border-b border-secondary last:border-none cursor-pointer'
+          >
             <Link
               href={option.href}
               role='menuitem'
-              className='text-lg font-medium tracking-wide'
+              className='flex items-center gap-2 text-lg tracking-widest text-background text-shadow uppercase hover:translate-x-2 anim-transform'
             >
-              {option.label}
+              <span className='text-xs'>&#8250;</span> {option.label}
             </Link>
           </li>
         ))}
