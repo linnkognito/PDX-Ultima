@@ -99,6 +99,9 @@
   .shadow-standard-sm {
     @apply shadow-sm shadow-par/80;
   }
+  .shadow-error {
+    @apply shadow-sm shadow-red-500;
+  }
 
   .max-w-site {
     @apply max-w-[1520px];

@@ -5,6 +5,7 @@ const fredoka = Fredoka({ subsets: ['latin'], display: 'swap' });
 import A11yMainContentLink from './_components/ui/A11yMainContentLink';
 import Header from '@/app/(site)/_components/ui/Header';
 import Footer from '@/app/(site)/_components/ui/Footer';
+import BackgroundImage from './_components/ui/BackgroundImage';
 
 export const metadata = {
   title: {
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
         className={`${fredoka.className} flex flex-col bg-background text-text min-w-screen max-w-screen min-h-screen`}
       >
         <A11yMainContentLink />
-        <Header />
+        <Header className='shadow-around' />
         <main role='main' id='main-content'>
           {children}
         </main>

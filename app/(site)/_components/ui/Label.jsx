@@ -18,7 +18,7 @@ function Label({
     <label
       id={`${htmlFor}-label`}
       htmlFor={htmlFor}
-      className={`${className}`}
+      className={`font-medium tracking-wider uppercase ${className}`}
       {...props}
     >
       {children}
